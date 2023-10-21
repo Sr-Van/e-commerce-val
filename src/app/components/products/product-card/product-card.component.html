@@ -2,8 +2,8 @@
   <img [src]="source" class="d-block w-100" alt="...">
   <b>{{card.product | product}}</b>
   <div class="d-flex justify-content-between p-3 align-items-center">
-      <b>{{card.price | currency: 'BRL'}}</b>
-      <button (click)="addToCart(btn1)" data-id="0" class="btn btn-success"
-      #btn1>Add to cart</button>
+      <b>R$ {{card.price}}</b>
+      <button [class.btn-success]="!isClicked" [class.btn-primary]="isClicked" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn btn-success"
+      >{{ cartMessage }}</button>
   </div>
 </li>

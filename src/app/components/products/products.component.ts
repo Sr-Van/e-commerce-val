@@ -1,27 +1,31 @@
 import { Component } from '@angular/core';
-import { RenderService } from 'src/app/services/render.service';
+import { getItemsService } from 'src/app/services/get-items.service';
 import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
   mybtn: HTMLElement;
 
-  isSelected: boolean = false
+  isSelected: boolean = false;
+  isEletro: boolean = false;
 
-  itemLists: object[]
+  itemLists: object[];
 
-  constructor(private render: RenderService) {
+  constructor(private service: getItemsService) {}
 
+  ngOnInit() {
+    this.itemLists = this.service.getArr();
   }
 
-  ngOnInit () {
-    this.itemLists = this.render.getArr()
+  verifyType(obj: any) {
+    if (obj.type === 'acessories') {
+      return true;
+    }
+
+    return false;
   }
-
-
-
 }

@@ -18,8 +18,6 @@ export class ProductPipe implements PipeTransform {
         return result += letra
       })
     })
-    console.log(result);
-
 
     return result;
   }

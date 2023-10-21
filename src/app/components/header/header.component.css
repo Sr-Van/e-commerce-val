@@ -20,30 +20,7 @@
   font-size: 25px;
 }
 
-.cart-products {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  gap: 15px;
-}
 
-.product {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 250px;
-  background-color: #bebebe;
-}
-
-.product img {
-  aspect-ratio: 1/ 1;
-  object-fit: cover;
-  background-color: #fff;
-  width: 50%;
-  height: 50%;
-}
 
 
 @media (min-width: 768px) {

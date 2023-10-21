@@ -3,7 +3,7 @@
       <h2 class="text-center text-lg-start">Eletronics</h2>
       <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
         <li *ngFor="let item of itemLists">
-          <app-product-card [theCard]="item"></app-product-card>
+          <app-product-card-eletronics *ngIf="verifyType(item)" [theCard]="item"></app-product-card-eletronics>
         </li>
       </ul>
   </div>
