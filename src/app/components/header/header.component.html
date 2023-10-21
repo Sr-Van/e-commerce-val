@@ -1,0 +1,67 @@
+<nav [class.navbar-open]="isMenuOpen" class="navbar d-flex flex-column w-100 top-0 z-3 position-fixed flex-md-row justify-content-between p-3">
+  <div>
+      <i (click)="toggleMenu()" class="fa-solid fa-bars"></i>
+      <h1>MERCH</h1>
+  </div>
+  <ul [class.hidden]="!isMenuOpen"  #menuList class="navbar-nav d-md-flex flex-column flex-md-row gap-1 align-items-center gap-md-5">
+      <li class="nav-item">
+          <a class="nav-link" href="#">Products</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link position-relative" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  1
+              </span>
+          </a>
+      </li>
+      <li class="nav-item">
+          <div class="input-group">
+              <input class="form-control" type="text">
+              <button class="btn btn-primary">Search</button>
+          </div>
+      </li>
+  </ul>
+</nav>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Cart</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body h-50">
+    <ul class="cart-products">
+      <li class="product">
+          <img src="" alt="">
+          <div>
+              <span>price</span>
+              <span>$30</span>
+          </div>
+          <input type="number">
+      </li>
+      <li class="product">
+          <img src="" alt="">
+          <div>
+              <span>price</span>
+              <span>$30</span>
+          </div>
+          <input type="number">
+      </li>
+      <li class="product">
+          <img src="" alt="">
+          <div>
+              <span>price</span>
+              <span>$30</span>
+          </div>
+          <input type="number">
+      </li>
+    </ul>
+  </div>
+  <div class="d-flex justify-content-evenly align-items-center h-25">
+      <p>Total: <b class="total-value">$400</b></p>
+      <button class="btn btn-primary">Pay</button>
+  </div>
+</div>
