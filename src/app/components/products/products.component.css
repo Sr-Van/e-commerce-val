@@ -1,3 +1,13 @@
-p {
-  padding-top: 500px;
+section {
+  padding-top: 10rem;
 }
+.product-container, .product-container h2 {
+  border-bottom: 1px solid #bebebe;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+

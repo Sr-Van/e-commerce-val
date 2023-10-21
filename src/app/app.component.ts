@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RenderService } from './services/render.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ecommerce';
+
+  itemLists: object[] = []
+
+  constructor(private render: RenderService) {
+
+  }
+
+  ngOnInit() {
+    this.itemLists = this.render.getArr()
+  }
 }
