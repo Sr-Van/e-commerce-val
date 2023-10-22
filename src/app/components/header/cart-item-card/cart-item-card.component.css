@@ -1,4 +1,5 @@
 .cart-products {
+  width: 100%;
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -10,14 +11,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 70%;
-  background-color: #bebebe;
+  gap: 1rem;
+  width: 100%;
+
+  border-bottom: 1px solid #bebebe;
 }
 
 .product img {
   aspect-ratio: 1/ 1;
   object-fit: cover;
-  background-color: #fff;
   width: 100%;
   height: 100%;
+}
+
+
+.product:last-child {
+  align-items: end;
+  padding-bottom: 10px;
 }

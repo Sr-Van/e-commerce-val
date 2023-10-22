@@ -40,8 +40,17 @@
 
     </ul>
   </div>
-  <div class="d-flex justify-content-evenly align-items-center h-25">
-      <p>Total: <b class="total-value">{{ totalPrice | currency: 'BRL' }}</b></p>
-      <button class="btn btn-primary" (click)="sendRequest()">Pagar</button>
-  </div>
+  <ul class="d-flex flex-column align-items-center h-25 list-unstyled w-100 gap-1">
+      <li class="d-flex justify-content-between w-100 px-3 pt-5">
+        <p class="m-0">Total:</p> <b class="total-value">{{ totalPrice | currency: 'BRL' }}</b>
+      </li>
+      <li class="d-flex justify-content-between w-100 px-3">
+        <p>entrega:</p> <b>gratuita para recanto verde</b>
+      </li>
+      <li class="d-flex justify-content-center w-100 px-3">
+        <button class="btn btn-primary w-75" (click)="sendRequest()">Continuar a compra</button>
+      </li>
+
+
+  </ul>
 </div>

@@ -42,11 +42,8 @@ export class CartItemCardComponent {
       .map(prod => prod._id)
       .indexOf(id)
 
-
-    console.log(indexToDelete);
-
-
     this.service.deleteItem(indexToDelete)
+    this.service.sendEvent.emit()
   }
 
 }

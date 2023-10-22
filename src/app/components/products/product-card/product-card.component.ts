@@ -19,14 +19,13 @@ export class ProductCardComponent {
     this.source = `../../../assets/images/${this.card.product}.jpg`;
     this.dataId = this.card._id;
     this.isClicked = this.service.verifyCart(this.card._id)
-    if(this.service.verifyCart(this.card._id)) {
-      if (this.isClicked) {
-        this.cartMessage = 'Remover';
-        return;
-      }
+    this.verifyCard()
 
-      this.cartMessage = 'Adicionar';
-    }
+
+    this.service.sendEvent.subscribe(() => {
+      this.isClicked = this.service.verifyCart(this.card._id)
+      this.verifyCard()
+    })
   }
 
   toggleCart(event: any) {
@@ -43,6 +42,17 @@ export class ProductCardComponent {
       return;
     }
     this.service.sendEvent.emit()
+    this.cartMessage = 'Adicionar';
+  }
+
+  verifyCard () {
+    if (this.isClicked) {
+      console.log('isclicked?', this.isClicked);
+
+      this.cartMessage = 'Remover';
+      return;
+    }
+
     this.cartMessage = 'Adicionar';
   }
 
