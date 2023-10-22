@@ -1,15 +1,22 @@
 import { EventEmitter, Injectable, OnInit } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { products } from 'src/types/product.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class getItemsService{
 
+  readonly url: string = 'https://my-api-six-beta.vercel.app/products'
+
   cart: any[] = []
 
-  getArr() {
-    return [{"_id":"65295e9955c087a90cd6cf96","product":"usb_hub","price":"20,00","type":"eletronics"},{"_id":"6529622355c087a90cd6cf9b","product":"garrafa_dagua","price":"20","type":"acessories"},{"_id":"6529629655c087a90cd6cf9c","product":"kit_manicure_tesoura","price":"20","type":"acessories"},{"_id":"6529631c55c087a90cd6cf9d","product":"fone_ouvido_cabeca","price":"15","type":"acessories"},{"_id":"6529636f55c087a90cd6cf9e","product":"fone_earpods","price":"15","type":"acessories"}]
+  getArr(): Observable<products[]> {
+    return this.http.get<products[]>(this.url)
   }
 
   verifyCart(item: any) {
@@ -23,7 +30,9 @@ export class getItemsService{
   }
 
   filterItemToCart(item: any) {
-    const received = this.getArr().filter(prod => prod._id == item)[0]
+    /* const received = this.getArr().subscribe(data => {
+      return data.filter(prod => prod._id == item)[0]
+    }) */
 
     const productIsOnCart = this.cart.filter(prod => prod._id == item)[0]
 
@@ -38,12 +47,12 @@ export class getItemsService{
 
       return
     }
-    this.cart.push(received)
+    /* this.cart.push(received) */
 
     this.setDb()
   }
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   setDb() {
     console.log('db seted');
@@ -72,5 +81,5 @@ export class getItemsService{
 
   sendEvent = new EventEmitter()
 
-  
+
 }

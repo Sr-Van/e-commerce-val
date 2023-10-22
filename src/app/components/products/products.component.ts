@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { getItemsService } from 'src/app/services/get-items.service';
 import { Input } from '@angular/core';
+import { products } from 'src/types/product.interface';
 
 @Component({
   selector: 'app-products',
@@ -13,16 +14,21 @@ export class ProductsComponent {
   isSelected: boolean = false;
   isEletro: boolean = false;
 
-  itemLists: object[];
+  itemLists: products[] = [];
+  eletronicItems: products[] = [];
 
   constructor(private service: getItemsService) {}
 
   ngOnInit() {
-    this.itemLists = this.service.getArr();
+    this.service.getArr().subscribe(data => {
+      this.itemLists = data
+    }
+    )
+
   }
 
   verifyType(obj: any) {
-    if (obj.type === 'acessories') {
+    if (obj.type === 'eletronics') {
       return true;
     }
 

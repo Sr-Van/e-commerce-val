@@ -14,6 +14,6 @@ export class AppComponent {
   constructor(private service: getItemsService) {}
 
   ngOnInit() {
-    this.itemLists = this.service.getArr();
+    /* this.itemLists = this.service.getArr(); */
   }
 }
