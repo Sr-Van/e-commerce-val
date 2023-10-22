@@ -1,6 +1,7 @@
 import { style } from '@angular/animations';
 import { Component, ViewChild } from '@angular/core';
 import { getItemsService } from 'src/app/services/get-items.service';
+import { SendMessageService } from 'src/app/services/send-message.service';
 import { products } from 'src/types/product.interface';
 
 const menuBtn = document.querySelector('.fa-bars')
@@ -14,7 +15,6 @@ const menuList = document.querySelector('.navbar-nav')
 export class HeaderComponent {
 
 
-  @ViewChild('menuList') private myMenu: any;
 
   source: string;
   cartList: products[]
@@ -22,7 +22,8 @@ export class HeaderComponent {
 
   isMenuOpen: boolean = false
 
-  constructor(private service: getItemsService) {}
+  constructor(private service: getItemsService,
+              private message: SendMessageService) {}
   totalPrice: number
 
 
@@ -36,6 +37,7 @@ export class HeaderComponent {
     this.cartList = this.service.cart
     console.log(this.cartList);
     this.lengthCart = this.cartList?.length
+    this.totalPrice = this.service.getCartPrice(this.cartList)
 
     this.service.sendEvent.subscribe(() => {
       this.cartList = this.service.cart
@@ -51,5 +53,8 @@ export class HeaderComponent {
     this.service.sendEvent.unsubscribe()
   }
 
+  sendRequest() {
+    this.message.filterArrayProducts(this.cartList)
+  }
 
 }

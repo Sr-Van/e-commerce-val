@@ -1,9 +1,9 @@
 <li class="product">
-  <img [src]="source" alt="">
+  <img [src]="source">
   <b>{{ item.product | product}}</b>
   <div class="d-flex gap-3">
       <span>Preco</span>
       <span>{{item.price | currency: 'BRL'}}</span>
   </div>
-  <button class="btn btn-danger">Remover</button>
+  <button class="btn btn-danger" [attr.data-id]="dataId" (click)="deleteItem($event)">Remover</button>
 </li>

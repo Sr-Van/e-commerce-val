@@ -86,7 +86,7 @@ export class getItemsService{
     return cart.reduce((accumulator, {price}) => accumulator + parseFloat(price), 0) || 0
   }
 
-  sendEvent: EventEmitter<Number> = new EventEmitter()
+  sendEvent: EventEmitter<any> = new EventEmitter()
 
 
 }
