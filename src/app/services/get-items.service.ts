@@ -1,8 +1,8 @@
-import { EventEmitter, Injectable, OnInit } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
 import { products } from 'src/types/product.interface';
 
 
@@ -13,28 +13,25 @@ export class getItemsService{
 
   readonly url: string = 'https://my-api-six-beta.vercel.app/products'
 
-  cart: any[] = []
+  cart: products[] = []
+  cartTotalPrice: number = 0
 
   getArr(): Observable<products[]> {
     return this.http.get<products[]>(this.url)
   }
 
   verifyCart(item: any) {
-    const arr = this.cart.filter(prod => prod._id == item)
+    const arr = this.cart?.filter(prod => prod._id == item)
 
 
-    if(arr.length >= 1) {
+    if(arr?.length >= 1) {
       return true
     }
     return false
   }
 
   filterItemToCart(item: any) {
-    /* const received = this.getArr().subscribe(data => {
-      return data.filter(prod => prod._id == item)[0]
-    }) */
-
-    const productIsOnCart = this.cart.filter(prod => prod._id == item)[0]
+    const productIsOnCart = this.cart?.filter(prod => prod._id == item)[0]
 
 
     if(productIsOnCart) {
@@ -47,21 +44,29 @@ export class getItemsService{
 
       return
     }
-    /* this.cart.push(received) */
 
-    this.setDb()
+    this.getArr().subscribe(data => {
+      this.cart.push(data.filter(prod => prod._id == item)[0])
+      this.getCartPrice(this.cart)
+      this.sendEvent.emit()
+      this.setDb()
+    })
   }
 
   constructor(private http: HttpClient) { }
 
   setDb() {
-    console.log('db seted');
-
     localStorage.setItem("cart", JSON.stringify(this.cart))
   }
 
-  getDb() {
-    return JSON.parse(localStorage.getItem('cart') || '')
+  getDb() :any {
+      if(localStorage['cart']) {
+        console.log('pegou');
+        this.cart = JSON.parse(localStorage.getItem('cart') || '')
+        return
+      }
+      this.setDb()
+      return
   }
 
   deleteItem(index: number) {
@@ -75,11 +80,13 @@ export class getItemsService{
   }
 
 
-  getCartPrice () {
-    return this.cart.reduce((accumulator, {price}) => accumulator + parseFloat(price), 0)
+  getCartPrice (cart: products[]) {
+    console.log(cart);
+
+    return cart.reduce((accumulator, {price}) => accumulator + parseFloat(price), 0) || 0
   }
 
-  sendEvent = new EventEmitter()
+  sendEvent: EventEmitter<Number> = new EventEmitter()
 
 
 }

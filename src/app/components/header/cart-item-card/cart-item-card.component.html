@@ -1,9 +1,9 @@
 <li class="product">
   <img [src]="source" alt="">
   <b>{{ item.product | product}}</b>
-  <div>
-      <span>price</span>
-      <span>R$ {{item.price}}</span>
+  <div class="d-flex gap-3">
+      <span>Preco</span>
+      <span>{{item.price | currency: 'BRL'}}</span>
   </div>
   <button class="btn btn-danger">Remover</button>
 </li>

@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { getItemsService } from 'src/app/services/get-items.service';
 
 @Component({
-  selector: 'app-product-card-eletronics',
+  selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
 })
@@ -34,16 +34,15 @@ export class ProductCardComponent {
     var target = event.target || event.srcElement || event.currentTarget;
 
     const id = target.getAttribute('data-id');
-    console.log(id);
+    console.log('on toggle cart event');
 
     this.service.filterItemToCart(id)
-    this.service.sendEvent.emit()
 
     if (this.isClicked) {
       this.cartMessage = 'Remover';
       return;
     }
-
+    this.service.sendEvent.emit()
     this.cartMessage = 'Adicionar';
   }
 

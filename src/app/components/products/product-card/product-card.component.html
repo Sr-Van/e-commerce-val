@@ -2,7 +2,7 @@
   <img [src]="source" class="d-block w-100" alt="...">
   <b>{{card.product | product}}</b>
   <div class="d-flex justify-content-between p-3 align-items-center">
-      <b>R$ {{card.price}}</b>
+      <b>{{card.price | currency: 'BRL'}}</b>
       <button [class.btn-success]="!isClicked" [class.btn-primary]="isClicked" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn btn-success"
       >{{ cartMessage }}</button>
   </div>

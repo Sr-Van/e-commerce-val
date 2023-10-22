@@ -1,10 +1,30 @@
-<section class="products d-flex gap-4" id="products">
+<section class="products d-flex flex-column gap-4 container" id="products">
+  <h2>Nossos Produtos:</h2>
   <div class="product-container container">
-      <h2 class="text-center text-lg-start">Eletronics</h2>
-      <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
-        <li *ngFor="let item of itemLists">
-          <app-product-card-eletronics *ngIf="verifyType(item)" [theCard]="item"></app-product-card-eletronics>
-        </li>
-      </ul>
+    <h2 class="text-center text-lg-start">Acessorios</h2>
+    <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
+      <li *ngFor="let item of acessoriesItems">
+        <app-product-card [theCard]="item"></app-product-card>
+      </li>
+
+    </ul>
+  </div>
+  <div class="product-container container">
+    <h2 class="text-center text-lg-start">Eletronicos</h2>
+    <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
+      <li *ngFor="let item of eletronicItems">
+        <app-product-card [theCard]="item"></app-product-card>
+      </li>
+
+    </ul>
+</div>
+  <div class="product-container container">
+    <h2 class="text-center text-lg-start">Variados</h2>
+    <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
+      <li *ngFor="let item of varietyItems">
+        <app-product-card [theCard]="item"></app-product-card>
+      </li>
+
+    </ul>
   </div>
 </section>
