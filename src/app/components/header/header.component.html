@@ -1,16 +1,27 @@
-<nav [class.navbar-open]="isMenuOpen" class="navbar d-flex flex-column w-100 top-0 z-3 position-fixed flex-md-row justify-content-between p-3">
+<nav [class.navbar-open]="isMenuOpen" class="navbar d-flex flex-column w-100 top-0 z-3 position-fixed flex-md-row justify-content-between p-3 color-bg-primary">
   <div>
       <i (click)="toggleMenu()" class="fa-solid fa-bars"></i>
       <h1>MERCH</h1>
   </div>
-  <ul [class.hidden]="!isMenuOpen"  #menuList class="navbar-nav d-md-flex flex-column flex-md-row gap-1 align-items-center gap-md-5">
+  <ul [class.hidden]="!isMenuOpen"  #menuList class="navbar-nav d-md-flex flex-column flex-md-row flex-column-reverse gap-1 align-items-center gap-md-5">
+
       <li class="nav-item">
-          <a class="nav-link" routerLink="/products">Products</a>
+        <div class="my-dropdown" data-js="closed" (mouseover)="showDropdown(dropdown)" (mouseout)="closeDropdown(dropdown, content)" #dropdown>
+          <button class="dropbtn">Dropdown</button>
+          <div class="my-dropdown-content" (mouseover)="activeHover(content)" (mouseout)="deactiveHover(content, dropdown)" #content data-js="nohovered">
+            <a href="#acessories">Acessórios</a>
+            <a href="#eletronics">Eletronics</a>
+            <a href="#variety">Variedades</a>
+          </div>
+        </div>
       </li>
       <li class="nav-item">
-          <a class="nav-link" routerLink="/contact">Contact</a>
+          <a class="nav-link" routerLink="/products" routerLinkActive="active-link">Produtos</a>
       </li>
       <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active-link">Contato</a>
+      </li>
+      <li class="nav-item pt-3 pt-lg-0">
           <a class="nav-link position-relative" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
               <i class="fa-solid fa-cart-shopping"></i>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -20,8 +31,8 @@
       </li>
       <li class="nav-item">
           <div class="input-group">
-              <input class="form-control" type="text">
-              <button class="btn btn-primary">Search</button>
+              <input class="form-control" type="text" placeholder="qual produto voce quer?">
+              <button class="btn color-bg-terciary">Busca</button>
           </div>
       </li>
   </ul>
@@ -29,10 +40,10 @@
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Cart</h5>
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrinho</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body h-50">
+  <div class="offcanvas-body h-50 color-bg">
     <ul class="w-100 cart-products list-unstyled d-flex flex-column gap-5 justify-content-center align-items-center">
       <li *ngFor="let item of cartList">
         <app-cart-item-card [item]="item"></app-cart-item-card>
@@ -40,15 +51,15 @@
 
     </ul>
   </div>
-  <ul class="d-flex flex-column align-items-center h-25 list-unstyled w-100 gap-1">
-      <li class="d-flex justify-content-between w-100 px-3 pt-5">
+  <ul class="cart-footer d-flex flex-column align-items-center h-25 list-unstyled w-100 gap-1 mb-0">
+      <li class="d-flex justify-content-between w-100 px-3 pt-3">
         <p class="m-0">Total:</p> <b class="total-value">{{ totalPrice | currency: 'BRL' }}</b>
       </li>
       <li class="d-flex justify-content-between w-100 px-3">
-        <p>entrega:</p> <b>gratuita para recanto verde</b>
+        <p>entrega:</p> <b class="text-success">gratuita para recanto verde</b>
       </li>
       <li class="d-flex justify-content-center w-100 px-3">
-        <button class="btn btn-primary w-75" (click)="sendRequest()">Continuar a compra</button>
+        <button class="btn color-bg-terciary w-75" (click)="sendRequest()">Continuar a compra</button>
       </li>
 
 

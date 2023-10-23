@@ -1,9 +1,19 @@
-<li class="product-card">
+<li class="product-card card-style">
   <img [src]="source" class="d-block w-100" alt="...">
-  <b>{{card.product | product}}</b>
-  <div class="d-flex justify-content-between p-3 align-items-center">
-      <b>{{card.price | currency: 'BRL'}}</b>
-      <button [class.btn-success]="!isClicked" [class.btn-primary]="isClicked" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn btn-success"
-      >{{ cartMessage }}</button>
+  <div class="d-flex flex-column">
+    <a >{{card.product | product}}</a>
+    <div class="d-flex justify-content-between align-items-start">
+        <div class="d-flex flex-column">
+          <span>{{card.price | currency: 'BRL'}}</span>
+          <div class="form-text text-success">à vista</div>
+        </div>
+    </div>
+    <button
+        [ngClass]="{
+          'color-bg-terciary' : !isClicked,
+          'color-bg-load' : isClicked
+        }" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn my-btn text-center"
+        style="width: 90px; border: none !important;">{{ cartMessage }}
+    </button>
   </div>
 </li>

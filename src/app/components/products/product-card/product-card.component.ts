@@ -33,7 +33,6 @@ export class ProductCardComponent {
     var target = event.target || event.srcElement || event.currentTarget;
 
     const id = target.getAttribute('data-id');
-    console.log('on toggle cart event');
 
     this.service.filterItemToCart(id)
 
@@ -47,8 +46,6 @@ export class ProductCardComponent {
 
   verifyCard () {
     if (this.isClicked) {
-      console.log('isclicked?', this.isClicked);
-
       this.cartMessage = 'Remover';
       return;
     }

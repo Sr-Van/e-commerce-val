@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #f6f6f6 !important;
+  color: #000000;
+}
+
+
+.color-primary {
+  color: #FFF05A !important;
+}
+
+
+
+.color-secondary {
+  color: #FFD25A !important;
+}
+.color-bg-secondary {
+  background-color: #FFD25A !important;
+}
+
+.color-terciary {
+  color: #ff912a !important;
+}
+.color-bg-terciary {
+  background-color: #ff912a !important;
+}
+
+.color-bg-load {
+  background-color: #FFAA5A !important;
+}
+.color-bg {
+  background-color: #f6f6f6 !important;
+}
+
+.card-style {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #000000;
+}
+
+@media (min-width: 768px) {
+  .color-bg-primary {
+    background-color: #06125b !important;
+  }
+}

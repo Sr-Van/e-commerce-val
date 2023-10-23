@@ -1,7 +1,6 @@
 import { products } from './../../../types/product.interface';
 import { Component } from '@angular/core';
 import { getItemsService } from 'src/app/services/get-items.service';
-import { Input } from '@angular/core';
 
 
 @Component({
@@ -13,7 +12,7 @@ export class ProductsComponent {
   mybtn: HTMLElement;
 
   isSelected: boolean = false;
-  isEletro: boolean = false;
+  isLoad: boolean = false;
 
   itemLists: products[] = [];
   eletronicItems: products[] = [];
@@ -25,6 +24,9 @@ export class ProductsComponent {
   ngOnInit() {
     this.service.getArr()?.subscribe(data => {
       this.itemLists = data
+      setTimeout(() => {
+        this.isLoad = true
+      }, 2000);
       this.eletronicItems = data?.filter(prod => prod.type === 'eletronics')
       this.acessoriesItems = data?.filter(prod => prod.type === 'acessories')
       this.varietyItems = data?.filter(prod => prod.type === 'variety')

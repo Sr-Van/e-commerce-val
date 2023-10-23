@@ -13,8 +13,9 @@
   align-items: center;
   gap: 1rem;
   width: 100%;
+  padding: .7rem;
 
-  border-bottom: 1px solid #bebebe;
+  border-radius: 1rem;
 }
 
 .product img {
@@ -22,10 +23,37 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
+  border-radius: 1rem;
 }
 
 
 .product:last-child {
   align-items: end;
   padding-bottom: 10px;
+}
+
+.color-primary {
+  color: #FFF05A !important;
+}
+
+.color-bg-primary {
+  background-color: #FFF05A !important;
+}
+
+.color-secondary {
+  color: #FFD25A !important;
+}
+.color-bg-secondary {
+  background-color: #FFD25A !important;
+}
+
+.color-terciary {
+  color: #FFAA5A !important;
+}
+.color-bg-terciary {
+  background-color: #FFAA5A !important;
+}
+
+.color-bg-black {
+  background-color: #191919 !important;
 }
