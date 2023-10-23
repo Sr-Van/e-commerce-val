@@ -71,10 +71,15 @@ export class HeaderComponent {
 
   deactiveHover(el: any, father:any) {
     console.log('saiu');
-console.log(father);
+    console.log(father);
 
     father.dataset.js = 'closed'
     el.dataset.js = 'nohovered'
+  }
+
+
+  scrollToId(el: any) {
+    (document.getElementById(el) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 
 }

@@ -9,9 +9,10 @@
         <div class="my-dropdown" data-js="closed" (mouseover)="showDropdown(dropdown)" (mouseout)="closeDropdown(dropdown, content)" #dropdown>
           <button class="dropbtn">Dropdown</button>
           <div class="my-dropdown-content" (mouseover)="activeHover(content)" (mouseout)="deactiveHover(content, dropdown)" #content data-js="nohovered">
-            <a href="#acessories">Acessórios</a>
-            <a href="#eletronics">Eletronics</a>
-            <a href="#variety">Variedades</a>
+            <a
+            (click)="scrollToId('acessories')">Acessórios</a>
+            <a (click)="scrollToId('eletronics')">Eletronicos</a>
+            <a (click)="scrollToId('variety')">Variedades</a>
           </div>
         </div>
       </li>
