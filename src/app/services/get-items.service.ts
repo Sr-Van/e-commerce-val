@@ -31,6 +31,8 @@ export class getItemsService{
   }
 
   filterItemToCart(item: any) {
+    console.log(item);
+
     const productIsOnCart = this.cart?.filter(prod => prod._id == item)[0]
 
 
@@ -44,6 +46,8 @@ export class getItemsService{
     }
 
     this.getArr().subscribe(data => {
+      console.log(data);
+
       this.cart.push(data.filter(prod => prod._id == item)[0])
       this.getCartPrice(this.cart)
       this.sendEvent.emit()

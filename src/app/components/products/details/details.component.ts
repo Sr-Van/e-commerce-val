@@ -16,6 +16,9 @@ export class DetailsComponent {
   }
   source: string
   isLoad: boolean
+  isClicked: boolean = false
+  cartMessage: string = 'Adicionar';
+  dataId: number
 
   constructor(private activeRoute: ActivatedRoute,
               private items: getItemsService) {}
@@ -28,11 +31,42 @@ export class DetailsComponent {
       console.log(this.product);
 
       this.source = `../../../assets/images/${this.product.product}.jpg`;
+      this.dataId = this.product._id;
+    })
+
+    this.items.sendEvent.subscribe(() => {
+      this.isClicked = this.items.verifyCart(this.product._id)
+      this.verifyCard()
     })
 
     this.isLoad = false
     setTimeout(() => {
       this.isLoad = true
     }, 2000);
+  }
+
+  toggleCart(event: any) {
+    this.isClicked = !this.isClicked
+    var target = event.target || event.srcElement || event.currentTarget;
+
+    const id = target.getAttribute('data-id');
+
+    this.items.filterItemToCart(id)
+
+    if (this.isClicked) {
+      this.cartMessage = 'Remover';
+      return;
+    }
+    this.items.sendEvent.emit()
+    this.cartMessage = 'Adicionar';
+  }
+
+  verifyCard () {
+    if (this.isClicked) {
+      this.cartMessage = 'Remover';
+      return;
+    }
+
+    this.cartMessage = 'Adicionar';
   }
 }

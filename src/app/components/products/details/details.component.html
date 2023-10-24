@@ -1,17 +1,29 @@
-<div class="container pt-5" [hidden]="!isLoad">
+<div class="container" [hidden]="!isLoad">
   <div class="prod">
-    <h3>
-      <a>
-        {{ product.product | product }}
-      </a>
-    </h3>
-    <div class="row w-100">
-      <div class="col-6">
+    <div class="d-flex flex-wrap w-100 justify-content-center justify-content-lg-evenly gap-5">
+      <div class="product">
+        <h1 class="header-title">{{ product.product | product}}</h1>
         <img [src]="source" alt="{{product.product}}">
       </div>
-      <div class="col-6 d-flex flex-column gap-3">
-        <span>{{ product.product | product}}</span>
-        <p>Lorem ipsum dolor sit amet.</p>
+      <div class="d-flex flex-column gap-3 p-3">
+        <h1 class="body-title">{{ product.product | product}}</h1>
+        <span class="description"> {{ product.description }}</span>
+
+        <div>
+          <span>R$</span>
+          <span>{{ product.price }},00</span>
+        </div>
+
+        <div>
+          <span class="text-success">Entrega gratuita para o recanto verde.</span>
+        </div>
+        <button
+        [ngClass]="{
+          'color-bg-terciary' : !isClicked,
+          'color-bg-load' : isClicked
+        }" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn my-btn text-center"
+        style="min-width: fit-content; border: none !important;">{{ cartMessage }}
+      </button>
       </div>
     </div>
   </div>

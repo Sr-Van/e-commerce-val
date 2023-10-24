@@ -1,5 +1,5 @@
-<li class="product-card card-style">
-  <img routerLink="{{ card.product }}" [src]="source" class="d-block w-100" alt="..." style="cursor: pointer;">
+<li class="product-card card-style" routerLink="{{ card.product }}" style="cursor: pointer;">
+  <img [src]="source" class="d-block w-100" alt="...">
   <div class="d-flex flex-column">
     <a routerLink="{{ card.product }}">{{card.product | product}}</a>
     <div class="d-flex justify-content-between align-items-start">
@@ -8,12 +8,12 @@
           <div class="form-text text-success">à vista</div>
         </div>
     </div>
-    <button
+    <!--button
         [ngClass]="{
           'color-bg-terciary' : !isClicked,
           'color-bg-load' : isClicked
         }" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn my-btn text-center"
         style="min-width: fit-content; border: none !important;">{{ cartMessage }}
-    </button>
+    </!--button-->
   </div>
 </li>
