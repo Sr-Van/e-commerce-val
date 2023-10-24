@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { getItemsService } from 'src/app/services/get-items.service';
-import { products } from 'src/types/product.interface';
+import { Products } from 'src/types/product.interface';
 
 @Component({
   selector: 'app-cart-item-card',
@@ -11,7 +11,7 @@ export class CartItemCardComponent {
 
   @Input() item: any
   dataId: number;
-  items: products[] = []
+  items: Products[] = []
 
 
   source: string

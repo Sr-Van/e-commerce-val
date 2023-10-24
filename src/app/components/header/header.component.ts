@@ -1,8 +1,9 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { GetFilterSearchService } from 'src/app/services/get-filter-search.service';
 import { getItemsService } from 'src/app/services/get-items.service';
 import { SendMessageService } from 'src/app/services/send-message.service';
-import { products } from 'src/types/product.interface';
+import { Products } from 'src/types/product.interface';
 
 
 @Component({
@@ -13,15 +14,22 @@ import { products } from 'src/types/product.interface';
 export class HeaderComponent {
 
   source: string;
-  cartList: products[]
+  cartList: Products[]
   lengthCart: number = 0
   totalPrice: number
 
   isMenuOpen: boolean = false
+  isOnRoute: boolean = true
+
+  subscribe: Subscription
+
+  menuEvent = new EventEmitter<boolean>()
 
   constructor(private service: getItemsService,
               private message: SendMessageService,
-              private filter: GetFilterSearchService) {}
+              private filter: GetFilterSearchService) {
+                this.menuEvent.subscribe(bool => this.isMenuOpen = bool)
+              }
 
 
 
@@ -47,6 +55,8 @@ export class HeaderComponent {
 
   ngOnDestroy () {
     this.service.sendEvent.unsubscribe()
+    this.menuEvent.unsubscribe()
+    this.subscribe.unsubscribe()
   }
 
   sendRequest() {
@@ -80,14 +90,16 @@ export class HeaderComponent {
 
   scrollToId(el: any) {
     (document.getElementById(el) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+
+    this.menuEvent.emit(false)
   }
 
   sendFilter(target: any) {
     let string = target.value
     console.log(target.value);
 
+    target.value = ''
     this.filter.sendFilterEvent.emit(string)
   }
-
 
 }

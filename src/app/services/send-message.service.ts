@@ -1,4 +1,4 @@
-import { products } from './../../types/product.interface';
+import { Products } from './../../types/product.interface';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class SendMessageService {
 
   constructor() { }
 
-  filterArrayProducts (arr: products[]) {
+  filterArrayProducts (arr: Products[]) {
     let str = ''
     //const arrFiltered = arr.map(item => item.product)
 

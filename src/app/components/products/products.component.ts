@@ -1,12 +1,12 @@
-import { products } from './../../../types/product.interface';
+import { Products } from './../../../types/product.interface';
 import { Component } from '@angular/core';
 import { getItemsService } from 'src/app/services/get-items.service';
 
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'],
+  selector: 'app-Products',
+  templateUrl: './Products.component.html',
+  styleUrls: ['./Products.component.css'],
 })
 export class ProductsComponent {
   mybtn: HTMLElement;
@@ -14,10 +14,10 @@ export class ProductsComponent {
   isSelected: boolean = false;
   isLoad: boolean = false;
 
-  itemLists: products[] = [];
-  eletronicItems: products[] = [];
-  acessoriesItems: products[] = [];
-  varietyItems: products[] = [];
+  itemLists: Products[] = [];
+  eletronicItems: Products[] = [];
+  acessoriesItems: Products[] = [];
+  varietyItems: Products[] = [];
 
   constructor(private service: getItemsService) {}
 

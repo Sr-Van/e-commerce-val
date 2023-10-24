@@ -3,7 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { products } from 'src/types/product.interface';
+import { Products } from 'src/types/product.interface';
 
 
 @Injectable({
@@ -11,13 +11,13 @@ import { products } from 'src/types/product.interface';
 })
 export class getItemsService{
 
-  readonly url: string = 'https://my-api-six-beta.vercel.app/products'
+  readonly url: string = 'https://my-api-six-beta.vercel.app/Products'
 
-  cart: products[] = []
+  cart: Products[] = []
   cartTotalPrice: number = 0
 
-  getArr(): Observable<products[]> {
-    return this.http.get<products[]>(this.url)
+  getArr(): Observable<Products[]> {
+    return this.http.get<Products[]>(this.url)
   }
 
   verifyCart(item: any) {
@@ -39,8 +39,6 @@ export class getItemsService{
         .map(prod => prod._id)
         .indexOf(item)
       this.deleteItem(indexToDelete)
-      console.log('produto ja esta no carrinho', indexToDelete);
-      console.log('novo carrinho', this.cart);
 
       return
     }
@@ -61,7 +59,6 @@ export class getItemsService{
 
   getDb() :any {
       if(localStorage['cart']) {
-        console.log('pegou');
         this.cart = JSON.parse(localStorage.getItem('cart') || '')
         return
       }
@@ -80,8 +77,7 @@ export class getItemsService{
   }
 
 
-  getCartPrice (cart: products[]) {
-    console.log(cart);
+  getCartPrice (cart: Products[]) {
 
     return cart.reduce((accumulator, {price}) => accumulator + parseFloat(price), 0) || 0
   }

@@ -1,4 +1,4 @@
-import { products } from './../../../types/product.interface';
+import { Products } from './../../../types/product.interface';
 import { Component } from '@angular/core';
 import { GetFilterSearchService } from 'src/app/services/get-filter-search.service';
 import { getItemsService } from 'src/app/services/get-items.service';
@@ -11,7 +11,7 @@ import { getItemsService } from 'src/app/services/get-items.service';
 })
 export class SearchComponent {
 
-  arr: products[] = []
+  arr: Products[] = []
   isLoad: boolean;
 
 
@@ -32,6 +32,11 @@ export class SearchComponent {
     setTimeout(() => {
       this.isLoad = true
     }, 2000);
+  }
+
+
+  ngOnDestroy() {
+    this.filter.sendFilterEvent.unsubscribe()
   }
 }
 

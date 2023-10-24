@@ -23,11 +23,7 @@ export class FooterComponent {
               }
 
   ngOnInit() {
-    this.service.getArr()?.subscribe(() => {
-      setTimeout(() => {
-        this.isLoad = true
-      }, 2300);
-    })
+
   }
 
 

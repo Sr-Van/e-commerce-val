@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { getItemsService } from './get-items.service';
-import { products } from 'src/types/product.interface';
+import { Products } from 'src/types/product.interface';
 
 import { Router } from '@angular/router';
 
@@ -9,15 +9,13 @@ import { Router } from '@angular/router';
 })
 export class GetFilterSearchService {
 
-  arr: products[] = []
-  arrFiltered: products[] = []
+  arr: Products[] = []
+  arrFiltered: Products[] = []
 
-  filterSearch(searched: string, arr: products[]) {
-    console.log(arr, searched);
+  filterSearch(searched: string, arr: Products[]) {
     this.arrFiltered = arr.filter(( client => {
       return client.product.toLowerCase().includes(searched.toLowerCase())
     }))
-    console.log(this.arrFiltered);
     if(this.arrFiltered.length > 0) {
       this.route.navigate(['search'])
       return

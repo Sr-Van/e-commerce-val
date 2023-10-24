@@ -26,10 +26,18 @@
   color: #fff !important;
 }
 
+.offcanvas-body {
+  background-color: #f6f6f6 !important;
+}
+
 .cart-footer {
   -webkit-box-shadow: 0px -2px 12px -1px rgba(0,0,0,0.29);
   -moz-box-shadow: 0px -2px 12px -1px rgba(0,0,0,0.29);
   box-shadow: 0px -2px 12px -1px rgba(0,0,0,0.29);
+}
+
+.cart-footer li {
+  font-size: .8rem;
 }
 
 .color-bg-terciary:hover {
@@ -84,7 +92,7 @@
 
 .my-dropdown-content a {
   cursor: pointer;
-  
+
   color: #fff;
   padding: 5px 10px;
   text-decoration: none;

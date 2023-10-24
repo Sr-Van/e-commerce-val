@@ -1,13 +1,13 @@
 <nav [class.navbar-open]="isMenuOpen" class="navbar d-flex flex-column w-100 top-0 z-3 position-fixed flex-md-row justify-content-between p-3 color-bg-primary">
   <div>
       <i (click)="toggleMenu()" class="fa-solid fa-bars"></i>
-      <h1 routerLink="/products" style="cursor: pointer;">MERCH</h1>
+      <h1 routerLink="/" style="cursor: pointer;">MERCH</h1>
   </div>
   <ul [class.hidden]="!isMenuOpen"  #menuList class="navbar-nav d-md-flex flex-column flex-md-row flex-column-reverse gap-1 align-items-center gap-md-5">
 
       <li class="nav-item">
         <div class="my-dropdown" data-js="closed" (mouseover)="showDropdown(dropdown)" (mouseout)="closeDropdown(dropdown, content)" #dropdown>
-          <button class="dropbtn">Dropdown</button>
+          <button class="dropbtn">Categorias</button>
           <div class="my-dropdown-content" (mouseover)="activeHover(content)" (mouseout)="deactiveHover(content, dropdown)" #content data-js="nohovered">
             <a
             (click)="scrollToId('acessories')">Acessórios</a>
@@ -25,7 +25,7 @@
       <li class="nav-item pt-3 pt-lg-0">
           <a class="nav-link position-relative" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
               <i class="fa-solid fa-cart-shopping"></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill color-bg-terciary">
                   {{ lengthCart }}
               </span>
           </a>
@@ -44,7 +44,7 @@
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrinho</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body h-50 color-bg">
+  <div class="offcanvas-body h-50">
     <ul class="w-100 cart-products list-unstyled d-flex flex-column gap-5 justify-content-center align-items-center">
       <li *ngFor="let item of cartList">
         <app-cart-item-card [item]="item"></app-cart-item-card>
@@ -62,7 +62,5 @@
       <li class="d-flex justify-content-center w-100 px-3">
         <button class="btn color-bg-terciary w-75" (click)="sendRequest()">Continuar a compra</button>
       </li>
-
-
   </ul>
 </div>

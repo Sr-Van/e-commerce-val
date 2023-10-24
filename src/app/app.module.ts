@@ -18,6 +18,7 @@ import { ProductPipe } from './product.pipe';
 import { NotFoundComponent } from './components/search/not-found/not-found.component';
 import { getItemsService } from './services/get-items.service';
 import { LoadingComponent } from './components/loading/loading.component';
+import { DetailsComponent } from './components/products/details/details.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     CartItemCardComponent,
     FooterComponent,
     NotFoundComponent,
-    LoadingComponent
+    LoadingComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
