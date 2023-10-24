@@ -13,7 +13,7 @@
           'color-bg-terciary' : !isClicked,
           'color-bg-load' : isClicked
         }" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn my-btn text-center"
-        style="width: 90px; border: none !important;">{{ cartMessage }}
+        style="min-width: fit-content; border: none !important;">{{ cartMessage }}
     </button>
   </div>
 </li>

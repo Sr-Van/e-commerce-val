@@ -83,6 +83,8 @@
 }
 
 .my-dropdown-content a {
+  cursor: pointer;
+  
   color: #fff;
   padding: 5px 10px;
   text-decoration: none;

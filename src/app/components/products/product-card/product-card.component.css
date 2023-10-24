@@ -39,6 +39,10 @@ button {
 
 a {
   color: #000000;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .product-card > div {

@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { GetFilterSearchService } from 'src/app/services/get-filter-search.service';
 import { getItemsService } from 'src/app/services/get-items.service';
 import { SendMessageService } from 'src/app/services/send-message.service';
 import { products } from 'src/types/product.interface';
@@ -14,12 +15,15 @@ export class HeaderComponent {
   source: string;
   cartList: products[]
   lengthCart: number = 0
+  totalPrice: number
 
   isMenuOpen: boolean = false
 
   constructor(private service: getItemsService,
-              private message: SendMessageService) {}
-  totalPrice: number
+              private message: SendMessageService,
+              private filter: GetFilterSearchService) {}
+
+
 
 
   toggleMenu() {
@@ -50,13 +54,9 @@ export class HeaderComponent {
   }
 
   showDropdown(el: any) {
-    console.log('entrou');
-
     el.dataset.js = 'opened'
   }
   closeDropdown(el: any, child:any) {
-    console.log('saiu');
-
     setTimeout(() => {
       if(child.dataset.js === 'hovered') {return}
         el.dataset.js = 'closed'
@@ -81,5 +81,13 @@ export class HeaderComponent {
   scrollToId(el: any) {
     (document.getElementById(el) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
+
+  sendFilter(target: any) {
+    let string = target.value
+    console.log(target.value);
+
+    this.filter.sendFilterEvent.emit(string)
+  }
+
 
 }

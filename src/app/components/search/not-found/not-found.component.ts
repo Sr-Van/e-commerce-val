@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./not-found.component.css']
 })
 export class NotFoundComponent {
+  isLoad: boolean = false
 
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.isLoad = true
+    }, 2000);
+  }
 }

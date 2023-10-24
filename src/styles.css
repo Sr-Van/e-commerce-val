@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,500;1,400&display=swap');
+
 
 body {
   background-color: #f6f6f6 !important;
   color: #000000;
+  font-family: 'Poppins', sans-serif;
 }
 
 
@@ -30,7 +33,7 @@ body {
   background-color: #FFAA5A !important;
 }
 .color-bg {
-  background-color: #f6f6f6 !important;
+  background-color: #06125b !important;
 }
 
 .card-style {

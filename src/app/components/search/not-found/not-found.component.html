@@ -1,1 +1,7 @@
-<p>not-found works!</p>
+<div *ngIf="isLoad" class="not-found-body">
+  <h1>Nenhum produto corresponde a pesquisa.</h1>
+  <img style="width: 10rem;" src="../../../../assets/undraw_questions (1).svg" alt="nenhum item encontrado">
+  <span>volte para a aba <a>produtos</a> ou faça uma nova pesquisa.</span>
+</div>
+
+<app-loading [hidden]="isLoad"></app-loading>

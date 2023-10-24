@@ -1,6 +1,6 @@
 <section *ngIf="isLoad" class="products d-flex flex-column gap-4 container position-relative" id="products">
   <div class="product-container container" id="acessories">
-    <h2 class="text-center text-lg-start">Acessorios</h2>
+    <h2 class="text-center text-lg-start">Acessórios</h2>
     <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
       <li *ngFor="let item of acessoriesItems">
         <app-product-card [theCard]="item"></app-product-card>
@@ -8,7 +8,7 @@
     </ul>
   </div>
   <div class="product-container container" id="eletronics">
-    <h2 class="text-center text-lg-start">Eletronicos</h2>
+    <h2 class="text-center text-lg-start">Eletrônicos</h2>
     <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
       <li *ngFor="let item of eletronicItems">
         <app-product-card [theCard]="item"></app-product-card>
@@ -27,4 +27,4 @@
   </div>
 </section>
 
-<div *ngIf="!isLoad" class="loading"><span>.</span><span>.</span><span>.</span></div>
+<app-loading [hidden]="isLoad"></app-loading>

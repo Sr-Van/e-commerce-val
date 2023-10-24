@@ -22,6 +22,7 @@ export class GetFilterSearchService {
       this.route.navigate(['search'])
       return
     }
+    this.sendFilterEvent.emit()
     this.route.navigate(['not-found'])
   }
 
