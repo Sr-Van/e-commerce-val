@@ -1,19 +1,26 @@
-<li class="product-card card-style" routerLink="{{ card.product }}" style="cursor: pointer;">
+<li class="product-card card-style" style="cursor: pointer;">
   <img [src]="source" class="d-block w-100" alt="...">
   <div class="d-flex flex-column">
-    <a routerLink="{{ card.product }}">{{card.product | product}}</a>
+    <a class="text-capitalize" routerLink="{{ card.product }}">{{card.product | product}}</a>
     <div class="d-flex justify-content-between align-items-start">
         <div class="d-flex flex-column">
           <span>{{card.price | currency: 'BRL'}}</span>
           <div class="form-text text-success">à vista</div>
         </div>
     </div>
-    <!--button
+    <div class="d-flex w-100 justify-content-between gap-2">
+      <a class="btn" routerLink="{{ card.product }}" style="border: 1px solid rgba(0,0,0,.12);width: 100%;" tooltip="click para ver as informações do produto." [delay]="300" >
+        <i class="fa-solid fa-eye"></i>
+      </a>
+
+      <button
         [ngClass]="{
           'color-bg-terciary' : !isClicked,
           'color-bg-load' : isClicked
         }" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn my-btn text-center"
         style="min-width: fit-content; border: none !important;">{{ cartMessage }}
-    </!--button-->
+      </button>
+    </div>
+
   </div>
 </li>

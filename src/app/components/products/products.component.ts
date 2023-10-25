@@ -1,5 +1,6 @@
 import { Products } from './../../../types/product.interface';
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { getItemsService } from 'src/app/services/get-items.service';
 
 
@@ -9,8 +10,8 @@ import { getItemsService } from 'src/app/services/get-items.service';
   styleUrls: ['./Products.component.css'],
 })
 export class ProductsComponent {
-  mybtn: HTMLElement;
 
+  subscribe: Subscription
   isSelected: boolean = false;
   isLoad: boolean = false;
 
@@ -22,16 +23,23 @@ export class ProductsComponent {
   constructor(private service: getItemsService) {}
 
   ngOnInit() {
-    this.service.getArr()?.subscribe(data => {
+
+    this.subscribe = this.service.getArr()?.subscribe(data => {
       this.itemLists = data
       setTimeout(() => {
         this.isLoad = true
       }, 2000);
+
+
       this.eletronicItems = data?.filter(prod => prod.type === 'eletronics')
       this.acessoriesItems = data?.filter(prod => prod.type === 'acessories')
       this.varietyItems = data?.filter(prod => prod.type === 'variety')
     })
+
+
   }
 
-
+  ngOnDestroy () {
+    this.subscribe.unsubscribe()
+  }
 }

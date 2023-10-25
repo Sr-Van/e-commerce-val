@@ -2,6 +2,7 @@ import { Products } from 'src/types/product.interface';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { getItemsService } from 'src/app/services/get-items.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -9,6 +10,8 @@ import { getItemsService } from 'src/app/services/get-items.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
+
+  subscribe: Subscription
 
   productName: any;
   product: any = {
@@ -26,23 +29,30 @@ export class DetailsComponent {
   ngOnInit() {
     this.productName = this.activeRoute.snapshot.paramMap.get('productName')
 
-    this.items.getArr()?.subscribe(arr => {
+
+
+    this.subscribe = this.items.getArr()?.subscribe(arr => {
       this.product = arr.filter(({product}) => product === this.productName)[0]
       console.log(this.product);
 
       this.source = `../../../assets/images/${this.product.product}.jpg`;
       this.dataId = this.product._id;
-    })
 
-    this.items.sendEvent.subscribe(() => {
+      this.isLoad = false
+      setTimeout(() => {
+        this.isLoad = true
+      }, 2000);
+
       this.isClicked = this.items.verifyCart(this.product._id)
       this.verifyCard()
     })
 
-    this.isLoad = false
-    setTimeout(() => {
-      this.isLoad = true
-    }, 2000);
+    this.subscribe = this.items.sendEvent.subscribe(() => {
+      this.isClicked = this.items.verifyCart(this.product._id)
+      this.verifyCard()
+    })
+
+
   }
 
   toggleCart(event: any) {
@@ -68,5 +78,9 @@ export class DetailsComponent {
     }
 
     this.cartMessage = 'Adicionar';
+  }
+
+  ngOnDestroy () {
+    this.subscribe.unsubscribe()
   }
 }

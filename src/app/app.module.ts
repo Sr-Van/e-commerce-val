@@ -20,6 +20,8 @@ import { getItemsService } from './services/get-items.service';
 import { LoadingComponent } from './components/loading/loading.component';
 import { DetailsComponent } from './components/products/details/details.component';
 
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,8 @@ import { DetailsComponent } from './components/products/details/details.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    TooltipModule
   ],
   providers: [getItemsService],
   bootstrap: [AppComponent]

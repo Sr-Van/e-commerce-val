@@ -12,6 +12,7 @@
   display: none;
 }
 .header-title {
+  padding: 1rem 0;
   text-align: center;
 }
 
@@ -29,6 +30,7 @@
 }
 
 .container .description{
+  margin-top: 10px;
   font-size: 1rem;
   font-weight: 300;
 }
