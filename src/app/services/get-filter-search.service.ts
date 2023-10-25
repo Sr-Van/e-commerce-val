@@ -3,6 +3,7 @@ import { getItemsService } from './get-items.service';
 import { Products } from 'src/types/product.interface';
 
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class GetFilterSearchService {
 
   arr: Products[] = []
   arrFiltered: Products[] = []
+  subscribe: Subscription
 
   filterSearch(searched: string, arr: Products[]) {
     this.arrFiltered = arr.filter(( client => {
@@ -26,13 +28,18 @@ export class GetFilterSearchService {
 
   constructor(private getItem: getItemsService,
               private route: Router) {
+    this.subscribe = this.sendFilterEvent.subscribe(str => {
+      this.filterSearch(str, this.arr)
+    })
     getItem.getArr().subscribe(data => {
       this.arr = data
     })
 
-    this.sendFilterEvent.subscribe(str => {
-      this.filterSearch(str, this.arr)
-    })
+
+  }
+
+  ngOnDestroy() {
+    this.subscribe.unsubscribe()
   }
 
   sendFilterEvent = new EventEmitter<string>()

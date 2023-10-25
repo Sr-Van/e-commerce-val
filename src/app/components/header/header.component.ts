@@ -22,6 +22,7 @@ export class HeaderComponent {
   isOnRoute: boolean = true
 
   subscribe: Subscription
+  eventSearch: Subscription
 
   menuEvent = new EventEmitter<boolean>()
 
@@ -45,18 +46,12 @@ export class HeaderComponent {
     this.lengthCart = this.cartList?.length
     this.totalPrice = this.service.getCartPrice(this.cartList)
 
-    this.service.sendEvent.subscribe(() => {
+    this.subscribe = this.service.sendEvent.subscribe(() => {
       this.cartList = this.service.cart
 
       this.totalPrice = this.service.getCartPrice(this.cartList)
       this.lengthCart = this.cartList?.length
     })
-  }
-
-  ngOnDestroy () {
-    this.service.sendEvent.unsubscribe()
-    this.menuEvent.unsubscribe()
-    this.subscribe.unsubscribe()
   }
 
   sendRequest() {
@@ -96,8 +91,6 @@ export class HeaderComponent {
 
   sendFilter(target: any) {
     let string = target.value
-    console.log(target.value);
-
     target.value = ''
     this.filter.sendFilterEvent.emit(string)
   }

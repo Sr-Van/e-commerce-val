@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { getItemsService } from './services/get-items.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +8,6 @@ import { getItemsService } from './services/get-items.service';
 export class AppComponent {
   title = 'ecommerce';
 
-  itemLists: object[] = [];
+  constructor() {}
 
-  constructor(private service: getItemsService) {}
-
-  ngOnInit() {
-  }
 }

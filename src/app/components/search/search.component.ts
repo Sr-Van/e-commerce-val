@@ -1,5 +1,6 @@
 import { Products } from './../../../types/product.interface';
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { GetFilterSearchService } from 'src/app/services/get-filter-search.service';
 import { getItemsService } from 'src/app/services/get-items.service';
 
@@ -13,6 +14,7 @@ export class SearchComponent {
 
   arr: Products[] = []
   isLoad: boolean;
+  subs: Subscription
 
 
   constructor(private getItem: getItemsService,
@@ -21,7 +23,7 @@ export class SearchComponent {
 
     console.log(this.arr);
 
-    this.filter.sendFilterEvent.subscribe(() => {
+    this.subs = this.filter.sendFilterEvent.subscribe(() => {
       this.ngOnInit()
     })
   }
@@ -36,7 +38,7 @@ export class SearchComponent {
 
 
   ngOnDestroy() {
-    this.filter.sendFilterEvent.unsubscribe()
+    this.subs.unsubscribe()
   }
 }
 
