@@ -1,11 +1,14 @@
 <li class="product card-style">
   <img [src]="source">
-  <div class="d-flex gap-5">
+  <div class="d-flex gap-5 w-100 justify-content-between">
     <b>{{ item.product | product}}</b>
     <div class="d-flex gap-3">
-        <span>Preço</span>
+        <span>Preço:</span>
         <span>{{item.price | currency: 'BRL'}}</span>
     </div>
   </div>
-  <button class="btn btn-danger" [attr.data-id]="dataId" (click)="deleteItem($event)">Remover</button>
+  <div class="d-flex w-100 justify-content-between align-items-center">
+    <a>Ver mais {{ item.type }}</a>
+    <button class="btn btn-danger" [attr.data-id]="dataId" (click)="deleteItem($event)">Remover</button>
+  </div>
 </li>

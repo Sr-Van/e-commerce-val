@@ -17,13 +17,17 @@
         <div>
           <span class="text-success">Entrega gratuita para o recanto verde.</span>
         </div>
-        <button
-        [ngClass]="{
-          'color-bg-terciary' : !isClicked,
-          'color-bg-load' : isClicked
-        }" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn my-btn text-center"
-        style="min-width: fit-content; border: none !important;">{{ cartMessage }}
-      </button>
+        <div class="d-flex flex-column gap-1">
+          <button
+            [ngClass]="{
+              'color-bg-terciary' : !isClicked,
+              'color-bg-load' : isClicked
+            }" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn my-btn text-center"
+            style="min-width: fit-content; border: none !important;">{{ cartMessage }}
+          </button>
+          <a class="text-center" (click)="goToLink()"
+          >Ver mais {{ product.type }}</a>
+        </div>
       </div>
     </div>
   </div>

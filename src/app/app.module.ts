@@ -21,6 +21,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { DetailsComponent } from './components/products/details/details.component';
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { CategoriesComponent } from './components/products/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     FooterComponent,
     NotFoundComponent,
     LoadingComponent,
-    DetailsComponent
+    DetailsComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,

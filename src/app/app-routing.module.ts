@@ -5,12 +5,14 @@ import { ProductsComponent } from './components/products/products.component';
 import { SearchComponent } from './components/search/search.component';
 import { NotFoundComponent } from './components/search/not-found/not-found.component';
 import { DetailsComponent } from './components/products/details/details.component';
+import { CategoriesComponent } from './components/products/categories/categories.component';
 
 const routes: Routes = [
+  {path: 'products/categoria/:cat', component: CategoriesComponent},
+  {path: 'products/:productName', component: DetailsComponent},
   {path: 'products', component: ProductsComponent},
   {path: 'search', component: SearchComponent},
   {path: 'not-found', component: NotFoundComponent},
-  {path: 'products/:productName', component: DetailsComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: '**', redirectTo: '/products', pathMatch: 'full'}
 ];

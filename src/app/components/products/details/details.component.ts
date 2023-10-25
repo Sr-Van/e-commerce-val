@@ -1,8 +1,9 @@
 import { Products } from 'src/types/product.interface';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { getItemsService } from 'src/app/services/get-items.service';
 import { Subscription } from 'rxjs';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-details',
@@ -17,6 +18,8 @@ export class DetailsComponent {
   product: any = {
     product: ''
   }
+  productType: string
+
   source: string
   isLoad: boolean
   isClicked: boolean = false
@@ -24,12 +27,11 @@ export class DetailsComponent {
   dataId: number
 
   constructor(private activeRoute: ActivatedRoute,
-              private items: getItemsService) {}
+              private items: getItemsService,
+              private router: Router) {}
 
   ngOnInit() {
     this.productName = this.activeRoute.snapshot.paramMap.get('productName')
-
-
 
     this.subscribe = this.items.getArr()?.subscribe(arr => {
       this.product = arr.filter(({product}) => product === this.productName)[0]
@@ -42,6 +44,8 @@ export class DetailsComponent {
       setTimeout(() => {
         this.isLoad = true
       }, 2000);
+
+      this.productType = this.product.type
 
       this.isClicked = this.items.verifyCart(this.product._id)
       this.verifyCard()
@@ -78,6 +82,10 @@ export class DetailsComponent {
     }
 
     this.cartMessage = 'Adicionar';
+  }
+
+  goToLink() {
+    this.router.navigate([`/products/categoria/${this.productType}`])
   }
 
   ngOnDestroy () {
