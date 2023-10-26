@@ -43,6 +43,11 @@ export class ProductsComponent {
 
   }
 
+  goToLink(event: any) {
+    this.router.navigate([`/products/${event.target.dataset.js}`])
+    console.log(event.target.dataset.js)
+  }
+
 
   ngOnDestroy () {
     this.subscribe.unsubscribe()

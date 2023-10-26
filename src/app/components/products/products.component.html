@@ -1,3 +1,26 @@
+<section class="mycarousel w-100 d-flex justify-content-center">
+  <carousel [isAnimated]="true" class="d-flex w-100 overflow-hidden" >
+    <slide>
+      <img src="../../../assets/images/adaptador_usb.jpg" alt="first slide" style="display: block; width: 100vw; object-fit: cover; aspect-ratio: 16/9;  cursor: pointer;" (click)="goToLink($event)" data-js="adaptador_usb">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Adaptador USB</h3>
+      </div>
+    </slide>
+    <slide>
+      <img src="../../../assets/images/vaso_ração_e_agua.jpg" alt="second slide" style="display: block; width: 100vw;object-fit: cover; aspect-ratio: 16/9; cursor: pointer;" (click)="goToLink($event)" data-js="vaso_ração_e_agua">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Vaso de Ração</h3>
+      </div>
+    </slide>
+    <slide>
+      <img src="../../../assets/images/smartwatch.jpg" alt="third slide" style="display: block; width: 100vw; object-fit: cover; aspect-ratio: 16/9; cursor: pointer;" (click)="goToLink($event)" data-js="smartwatch">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Smartwatch</h3>
+      </div>
+    </slide>
+  </carousel>
+</section>
+
 <section *ngIf="isLoad" class="products d-flex flex-column gap-4 container position-relative" id="products">
   <div class="product-container container" id="acessories">
     <h2 class="text-center text-lg-start">Acessórios</h2>

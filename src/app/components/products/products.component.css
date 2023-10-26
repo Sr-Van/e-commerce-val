@@ -1,5 +1,5 @@
-section {
-  padding: 10rem 0;
+.mycarousel {
+  padding: 4rem 0;
 }
 .product-container h2 {
   padding: 3rem  0 !important;
@@ -11,6 +11,18 @@ section {
   gap: 1rem;
 }
 
+slide img {
+  height: 20vh !important;
+}
+
+@media(min-width: 765px) {
+  .mycarousel {
+    padding: 5.8rem 0;
+  }
+  slide img {
+    height: 40vh !important;
+  }
+}
 
 
 
