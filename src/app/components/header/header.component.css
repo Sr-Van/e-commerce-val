@@ -22,7 +22,7 @@
   font-size: 25px;
 }
 
-.nav-link {
+.nav-link{
   color: #fff !important;
 }
 
@@ -56,15 +56,18 @@
       background-color: rgb(248,249,250);
       box-shadow: 0 1px 3px 1px rgb(182, 182, 182);
   }
-  .navbar div > .fa-solid {
-      display: none;
-  }
 
-  .navbar ul {
-      display: flex;
-  }
   .carousel {
       width: 30% !important;
+  }
+}
+
+@media(min-width: 1000px) {
+  .navbar div > .fa-solid {
+    display: none;
+  }
+  .navbar ul {
+  display: flex;
   }
 }
 

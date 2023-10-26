@@ -3,7 +3,7 @@
       <i (click)="toggleMenu()" class="fa-solid fa-bars"></i>
       <h1 routerLink="/" style="cursor: pointer;">MERCH</h1>
   </div>
-  <ul [class.hidden]="!isMenuOpen"  #menuList class="navbar-nav d-md-flex flex-column flex-md-row flex-column-reverse gap-1 align-items-center gap-md-5">
+  <ul [class.hidden]="!isMenuOpen"  #menuList class="navbar-nav flex-column flex-md-row flex-column-reverse gap-1 align-items-center gap-md-5">
 
       <li class="nav-item">
         <div class="my-dropdown" data-js="closed" (mouseover)="showDropdown(dropdown)" (mouseout)="closeDropdown(dropdown, content)" #dropdown>
