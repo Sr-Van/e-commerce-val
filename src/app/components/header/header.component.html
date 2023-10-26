@@ -5,7 +5,7 @@
   </div>
   <ul [class.hidden]="!isMenuOpen"  #menuList class="navbar-nav flex-column flex-md-row flex-column-reverse gap-1 align-items-center gap-md-5">
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isOnRoute">
         <div class="my-dropdown" data-js="closed" (mouseover)="showDropdown(dropdown)" (mouseout)="closeDropdown(dropdown, content)" #dropdown>
           <button class="dropbtn">Categorias</button>
           <div class="my-dropdown-content" (mouseover)="activeHover(content)" (mouseout)="deactiveHover(content, dropdown)" #content data-js="nohovered">
@@ -17,7 +17,7 @@
         </div>
       </li>
       <li class="nav-item">
-          <a class="nav-link" routerLink="/products" routerLinkActive="active-link">Produtos</a>
+          <a class="nav-link" routerLink="/products" routerLinkActive="active-link" >Produtos</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" (click)="scrollToId('footer')" style="cursor: pointer;">Contato</a>

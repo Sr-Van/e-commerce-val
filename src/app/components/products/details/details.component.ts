@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { getItemsService } from 'src/app/services/get-items.service';
 import { Subscription } from 'rxjs';
 import { query } from '@angular/animations';
+import { EventsService } from 'src/app/services/events.service';
 
 @Component({
   selector: 'app-details',
@@ -28,9 +29,11 @@ export class DetailsComponent {
 
   constructor(private activeRoute: ActivatedRoute,
               private items: getItemsService,
-              private router: Router) {}
+              private router: Router,
+              private eventRouter: EventsService) {}
 
   ngOnInit() {
+    this.eventRouter.routerEvent.emit(false)
     this.productName = this.activeRoute.snapshot.paramMap.get('productName')
 
     this.subscribe = this.items.getArr()?.subscribe(arr => {

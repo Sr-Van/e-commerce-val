@@ -1,5 +1,6 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { EventsService } from 'src/app/services/events.service';
 import { GetFilterSearchService } from 'src/app/services/get-filter-search.service';
 import { getItemsService } from 'src/app/services/get-items.service';
 import { SendMessageService } from 'src/app/services/send-message.service';
@@ -13,6 +14,7 @@ import { Products } from 'src/types/product.interface';
 })
 export class HeaderComponent {
 
+
   source: string;
   cartList: Products[]
   lengthCart: number = 0
@@ -23,14 +25,17 @@ export class HeaderComponent {
 
   subscribe: Subscription
   eventSearch: Subscription
+  routeSubs: Subscription
 
   menuEvent = new EventEmitter<boolean>()
 
   constructor(private service: getItemsService,
               private message: SendMessageService,
-              private filter: GetFilterSearchService) {
+              private filter: GetFilterSearchService,
+              private event: EventsService) {
                 this.menuEvent.subscribe(bool => this.isMenuOpen = bool)
               }
+
 
 
 
@@ -52,8 +57,11 @@ export class HeaderComponent {
       this.totalPrice = this.service.getCartPrice(this.cartList)
       this.lengthCart = this.cartList?.length
     })
-  }
 
+
+    this.routeSubs = this.event.routerEvent.subscribe(data => this.isOnRoute = data)
+  }
+  
   sendRequest() {
     this.message.filterArrayProducts(this.cartList)
   }

@@ -2,6 +2,7 @@ import { Products } from './../../../types/product.interface';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { EventsService } from 'src/app/services/events.service';
 import { getItemsService } from 'src/app/services/get-items.service';
 
 
@@ -22,7 +23,8 @@ export class ProductsComponent {
   varietyItems: Products[] = [];
 
   constructor(private service: getItemsService,
-              private router: Router) {}
+              private router: Router,
+              private eventRouter: EventsService) {}
 
   ngOnInit() {
 
@@ -34,6 +36,8 @@ export class ProductsComponent {
         this.isLoad = true
       }, 2000);
 
+
+      this.eventRouter.routerEvent.emit(true)
 
       this.eletronicItems = data?.filter(prod => prod.type === 'eletronics')
       this.acessoriesItems = data?.filter(prod => prod.type === 'acessories')

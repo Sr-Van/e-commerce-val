@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { EventsService } from 'src/app/services/events.service';
 import { getItemsService } from 'src/app/services/get-items.service';
 import { Products } from 'src/types/product.interface';
 
@@ -19,7 +20,8 @@ export class CategoriesComponent {
 
 
   constructor(private active: ActivatedRoute,
-              private service: getItemsService) {}
+              private service: getItemsService,
+              private routerEvent: EventsService) {}
 
   ngOnInit() {
     this.category = this.active.snapshot.paramMap.get('cat')
@@ -29,6 +31,7 @@ export class CategoriesComponent {
       console.log(this.categoryItems);
     })
 
+  this.routerEvent.routerEvent.emit(false)
 
   }
 
