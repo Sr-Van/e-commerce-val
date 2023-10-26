@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { getItemsService } from 'src/app/services/get-items.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -24,7 +25,8 @@ export class ProductCardComponent {
   cartMessage: string = 'Adicionar';
 
 
-  constructor(private service: getItemsService) {
+  constructor(private service: getItemsService,
+              private router: Router) {
 
   }
 
@@ -74,6 +76,11 @@ export class ProductCardComponent {
 
     this.cartMessage = 'Adicionar';
   }
+
+  goToLink() {
+    this.router.navigate([`/products/${this.card.product}`])
+  }
+
 
   ngOnDestroy () {
     this.subscribe.unsubscribe()

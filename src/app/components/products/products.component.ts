@@ -1,5 +1,6 @@
 import { Products } from './../../../types/product.interface';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { getItemsService } from 'src/app/services/get-items.service';
 
@@ -13,19 +14,22 @@ export class ProductsComponent {
 
   subscribe: Subscription
   isSelected: boolean = false;
-  isLoad: boolean = false;
+  isLoad: boolean
 
   itemLists: Products[] = [];
   eletronicItems: Products[] = [];
   acessoriesItems: Products[] = [];
   varietyItems: Products[] = [];
 
-  constructor(private service: getItemsService) {}
+  constructor(private service: getItemsService,
+              private router: Router) {}
 
   ngOnInit() {
 
     this.subscribe = this.service.getArr()?.subscribe(data => {
       this.itemLists = data
+
+      this.isLoad = false
       setTimeout(() => {
         this.isLoad = true
       }, 2000);
@@ -38,6 +42,7 @@ export class ProductsComponent {
 
 
   }
+
 
   ngOnDestroy () {
     this.subscribe.unsubscribe()
