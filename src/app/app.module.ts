@@ -14,7 +14,7 @@ import { ProductCardComponent } from './components/products/product-card/product
 import { CartItemCardComponent } from './components/header/cart-item-card/cart-item-card.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-import { ProductPipe } from './product.pipe';
+import { ProductPipe } from './pipes/product.pipe';
 import { NotFoundComponent } from './components/search/not-found/not-found.component';
 import { getItemsService } from './services/get-items.service';
 import { LoadingComponent } from './components/loading/loading.component';
@@ -23,6 +23,8 @@ import { DetailsComponent } from './components/products/details/details.componen
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CategoriesComponent } from './components/products/categories/categories.component';
+import { TranslatePipe } from './pipes/translate.pipe';
+import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { CategoriesComponent } from './components/products/categories/categories
     NotFoundComponent,
     LoadingComponent,
     DetailsComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    TranslatePipe,
+    CookieConsentComponent
   ],
   imports: [
     BrowserModule,

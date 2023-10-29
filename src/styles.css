@@ -43,6 +43,7 @@ body {
   color: #000000;
 }
 
+
 @media (min-width: 768px) {
   .color-bg-primary {
     background-color: #06125b !important;

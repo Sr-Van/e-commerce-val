@@ -15,7 +15,7 @@ export class ProductsComponent {
 
   subscribe: Subscription
   isSelected: boolean = false;
-  isLoad: boolean
+  isLoad: boolean = false
 
   itemLists: Products[] = [];
   eletronicItems: Products[] = [];
@@ -31,7 +31,6 @@ export class ProductsComponent {
     this.subscribe = this.service.getArr()?.subscribe(data => {
       this.itemLists = data
 
-      this.isLoad = false
       setTimeout(() => {
         this.isLoad = true
       }, 2000);
@@ -49,7 +48,10 @@ export class ProductsComponent {
 
   goToLink(event: any) {
     this.router.navigate([`/products/${event.target.dataset.js}`])
-    console.log(event.target.dataset.js)
+  }
+
+  goToLinkCategorie(event: any) {
+    this.router.navigate([`/products/categoria/${event.target.dataset.js}`])
   }
 
 

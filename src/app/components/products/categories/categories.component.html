@@ -1,11 +1,10 @@
-<section class="container d-flex flex-column gap-3">
-  <span class="container text-center text-lg-start">Todos os {{ category }}</span>
+<section *ngIf="isLoad" class="container d-flex flex-column gap-3">
+  <span class="container text-center text-lg-start">Todos os {{ category | translate}}</span>
   <div class="product-container container" id="variety">
     <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
       <li *ngFor="let item of categoryItems">
         <app-product-card [theCard]="item"></app-product-card>
       </li>
-
     </ul>
   </div>
 </section>

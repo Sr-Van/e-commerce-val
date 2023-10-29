@@ -22,7 +22,7 @@ export class DetailsComponent {
   productType: string
 
   source: string
-  isLoad: boolean
+  isLoad: boolean = false
   isClicked: boolean = false
   cartMessage: string = 'Adicionar';
   dataId: number
@@ -43,7 +43,6 @@ export class DetailsComponent {
       this.source = `../../../assets/images/${this.product.product}.jpg`;
       this.dataId = this.product._id;
 
-      this.isLoad = false
       setTimeout(() => {
         this.isLoad = true
       }, 2000);

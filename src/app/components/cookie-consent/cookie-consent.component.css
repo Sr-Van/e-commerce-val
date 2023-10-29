@@ -1,0 +1,29 @@
+.cookie-consent {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  animation: fadeInOut 0.5s ease-in-out;
+
+  font-size: .8rem;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+button {
+  border: none !important;
+  border-radius: .6rem;
+  padding: .3rem .5rem;
+}
+

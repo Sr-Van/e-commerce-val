@@ -1,0 +1,10 @@
+<div *ngIf="!userConsented && showCookieConsent">
+  <div class="cookie-consent color-bg">
+    <p>Nós utilizamos cookies para melhorar a sua experiência no site. Aceita o uso de cookies?</p>
+    <div class="w-100 d-flex justify-content-evenly">
+      <button class="color-bg-terciary" (click)="acceptCookies()">Aceitar</button>
+      <button class="color-bg-secondary" (click)="rejectCookies()">Rejeitar</button>
+    </div>
+  </div>
+</div>
+

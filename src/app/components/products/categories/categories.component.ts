@@ -27,8 +27,12 @@ export class CategoriesComponent {
     this.category = this.active.snapshot.paramMap.get('cat')
 
     this.subscribe = this.service.getArr()?.subscribe(data => {
+
+      setTimeout(() => {
+        this.isLoad = true
+      }, 2000);
+
       this.categoryItems = data.filter(({type}) => type === this.category)
-      console.log(this.categoryItems);
     })
 
   this.routerEvent.routerEvent.emit(false)

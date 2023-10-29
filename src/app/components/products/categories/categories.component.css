@@ -2,10 +2,6 @@ section {
   padding: 10rem 0;
 }
 
-.product-container h2 {
-  padding: 3rem  0 !important;
-}
-
 .product-list {
   display: flex;
   flex-wrap: wrap;

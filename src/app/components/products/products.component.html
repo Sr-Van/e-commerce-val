@@ -1,22 +1,13 @@
-<section class="mycarousel w-100 d-flex justify-content-center">
+<section *ngIf="isLoad" class="mycarousel w-100 d-flex justify-content-center">
   <carousel [isAnimated]="true" class="d-flex w-100 overflow-hidden" >
     <slide>
-      <img src="../../../assets/images/adaptador_usb.jpg" alt="first slide" style="display: block; width: 100vw; object-fit: cover; aspect-ratio: 16/9;  cursor: pointer;" (click)="goToLink($event)" data-js="adaptador_usb">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Adaptador USB</h3>
-      </div>
+      <img src="../../../assets/images/promotions/banner psd smartwatch.png" alt="first slide" style="display: block; width: 100vw; object-fit: contain; aspect-ratio: 16/9;  cursor: pointer;" (click)="goToLink($event)" data-js="smartwatch">
     </slide>
     <slide>
-      <img src="../../../assets/images/vaso_ração_e_agua.jpg" alt="second slide" style="display: block; width: 100vw;object-fit: cover; aspect-ratio: 16/9; cursor: pointer;" (click)="goToLink($event)" data-js="vaso_ração_e_agua">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Vaso de Ração</h3>
-      </div>
+      <img src="../../../assets/images/promotions/banner psd garrafa.png" alt="second slide" style="display: block; width: 100vw;object-fit: contain; aspect-ratio: 16/9; cursor: pointer;" (click)="goToLink($event)" data-js="garrafa_dagua">
     </slide>
     <slide>
-      <img src="../../../assets/images/smartwatch.jpg" alt="third slide" style="display: block; width: 100vw; object-fit: cover; aspect-ratio: 16/9; cursor: pointer;" (click)="goToLink($event)" data-js="smartwatch">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Smartwatch</h3>
-      </div>
+      <img src="../../../assets/images/promotions/banner psd variedades.png" alt="third slide" style="display: block; width: 100vw; object-fit: contain; aspect-ratio: 16/9; cursor: pointer;" (click)="goToLinkCategorie($event)" data-js="variety">
     </slide>
   </carousel>
 </section>

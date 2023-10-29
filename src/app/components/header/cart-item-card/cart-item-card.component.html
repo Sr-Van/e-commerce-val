@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="d-flex w-100 justify-content-between align-items-center">
-    <a>Ver mais {{ item.type }}</a>
+    <a (click)="goToLink()">Ver mais {{ item.type | translate }}</a>
     <button class="btn btn-danger" [attr.data-id]="dataId" (click)="deleteItem($event)">Remover</button>
   </div>
 </li>

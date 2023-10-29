@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { getItemsService } from 'src/app/services/get-items.service';
 import { Products } from 'src/types/product.interface';
 
@@ -27,7 +28,8 @@ export class CartItemCardComponent {
   }
 
 
-  constructor(private service: getItemsService) {
+  constructor(private service: getItemsService,
+              private router: Router) {
 
   }
 
@@ -44,6 +46,11 @@ export class CartItemCardComponent {
 
     this.service.deleteItem(indexToDelete)
     this.service.sendEvent.emit()
+  }
+
+
+  goToLink() {
+    this.router.navigate([`/products/categoria/${this.item.type}`])
   }
 
 }
