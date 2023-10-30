@@ -2,7 +2,13 @@
   padding-top: 70px;
 }
 .product-container h2 {
-  padding: 3rem  0 !important;
+  padding: 1rem  0 !important;
+  width: 100%;
+}
+
+.product-container a {
+  cursor: pointer;
+  font-size: .8rem;
 }
 
 .product-list {
@@ -28,6 +34,10 @@ slide img {
   }
   slide img {
     height: 40vh !important;
+  }
+  .product-container h2 {
+    padding: 3rem  0 !important;
+    width: fit-content;
   }
 }
 

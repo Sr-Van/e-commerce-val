@@ -14,34 +14,46 @@
 
 <section *ngIf="isLoad" class="products d-flex flex-column gap-4 container position-relative" id="products">
   <div class="product-container container" id="acessories">
-    <h2 class="text-center text-lg-start">Acessórios</h2>
+    <div class="d-flex flex-wrap gap-3 mb-3 align-items-center justify-content-center justify-content-lg-start">
+      <h2 class="text-center text-lg-start">Acessórios</h2>
+      <a class=" text-center text-lg-start text-decoration-none" (click)="goToLinkCategorie($event)" data-js="acessories">ver todos</a>
+    </div>
     <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
-      <li *ngFor="let item of acessoriesItems">
+      <li *ngFor="let item of acessoriesItems.slice(0, 5)">
         <app-product-card [theCard]="item"></app-product-card>
       </li>
     </ul>
   </div>
   <div class="product-container container" id="eletronics">
-    <h2 class="text-center text-lg-start">Eletrônicos</h2>
+    <div class="d-flex flex-wrap gap-3 mb-3 align-items-center">
+      <h2 class="text-center text-lg-start">Eletrônicos</h2>
+      <a class=" text-center text-lg-start text-decoration-none" (click)="goToLinkCategorie($event)" data-js="eletronics">ver todos</a>
+    </div>
     <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
-      <li *ngFor="let item of eletronicItems">
+      <li *ngFor="let item of eletronicItems.slice(0, 5)">
         <app-product-card [theCard]="item"></app-product-card>
       </li>
     </ul>
 </div>
   <div class="product-container container" id="variety">
-    <h2 class="text-center text-lg-start">Variados</h2>
+    <div class="d-flex flex-wrap gap-3 mb-3 align-items-center">
+      <h2 class="text-center text-lg-start">Variedades</h2>
+      <a class=" text-center text-lg-start text-decoration-none" (click)="goToLinkCategorie($event)" data-js="variety">ver todos</a>
+    </div>
     <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
-      <li *ngFor="let item of varietyItems">
+      <li *ngFor="let item of varietyItems.slice(0, 5)">
         <app-product-card [theCard]="item"></app-product-card>
       </li>
 
     </ul>
   </div>
   <div class="product-container container" id="variety">
-    <h2 class="text-center text-lg-start">Bolsas</h2>
+    <div class="d-flex flex-wrap gap-3 mb-3 align-items-center">
+      <h2 class="text-center text-lg-start">Bolsas</h2>
+      <a class=" text-center text-lg-start text-decoration-none" (click)="goToLinkCategorie($event)" data-js="bags">ver todos</a>
+    </div>
     <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
-      <li *ngFor="let item of bagItems">
+      <li *ngFor="let item of bagItems.slice(0, 5)">
         <app-product-card [theCard]="item"></app-product-card>
       </li>
 
