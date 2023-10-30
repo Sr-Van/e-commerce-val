@@ -5,19 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TranslatePipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): any {
-    let result = ''
+  tranlates: any = {
+    acessories : 'acessórios',
+    eletronics : 'eletrônicos',
+    variety : 'variedades',
+    bags : 'bolsas'
+  }
 
-    if(value === 'acessories') {
-      result = 'acessórios'
-    }
-    if(value === 'eletronics') {
-      result = 'eletrônicos'
-    }
-    if(value === 'variety') {
-      result = 'variedades'
-    }
-    return result
+  transform(value: any, ...args: unknown[]): any {
+    return this.tranlates[value]
   }
 
 }
