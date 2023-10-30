@@ -31,9 +31,7 @@ export class ProductsComponent {
     this.subscribe = this.service.getArr()?.subscribe(data => {
       this.itemLists = data
 
-      setTimeout(() => {
-        this.isLoad = true
-      }, 2000);
+      this.isLoad = true
 
 
       this.eventRouter.routerEvent.emit(true)

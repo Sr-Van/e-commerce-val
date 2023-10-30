@@ -28,9 +28,7 @@ export class CategoriesComponent {
 
     this.subscribe = this.service.getArr()?.subscribe(data => {
 
-      setTimeout(() => {
-        this.isLoad = true
-      }, 2000);
+      this.isLoad = true
 
       this.categoryItems = data.filter(({type}) => type === this.category)
     })

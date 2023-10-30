@@ -35,10 +35,7 @@ export class ProductCardComponent {
       this.source = `../../../assets/images/${this.card.product}.jpg`;
       this.dataId = this.card._id;
 
-      this.isLoad = false
-      setTimeout(() => {
-        this.isLoad = true
-      }, 2000);
+      this.isLoad = true
 
       this.isClicked = this.service.verifyCart(this.card._id)
       this.verifyCard()

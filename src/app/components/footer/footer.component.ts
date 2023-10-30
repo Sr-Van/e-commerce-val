@@ -17,7 +17,7 @@ export class FooterComponent {
                 this.router.events.subscribe(() => {
                   setTimeout(() => {
                     this.isLoad = true
-                  }, 3000);
+                  }, 2000);
                   this.isLoad = false
                 })
               }

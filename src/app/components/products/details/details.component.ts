@@ -43,9 +43,7 @@ export class DetailsComponent {
       this.source = `../../../assets/images/${this.product.product}.jpg`;
       this.dataId = this.product._id;
 
-      setTimeout(() => {
-        this.isLoad = true
-      }, 2000);
+      this.isLoad = true
 
       this.productType = this.product.type
 
