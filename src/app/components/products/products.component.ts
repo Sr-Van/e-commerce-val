@@ -21,6 +21,7 @@ export class ProductsComponent {
   eletronicItems: Products[] = [];
   acessoriesItems: Products[] = [];
   varietyItems: Products[] = [];
+  bagItems: Products[] = [];
 
   constructor(private service: getItemsService,
               private router: Router,
@@ -39,6 +40,7 @@ export class ProductsComponent {
       this.eletronicItems = data?.filter(prod => prod.type === 'eletronics')
       this.acessoriesItems = data?.filter(prod => prod.type === 'acessories')
       this.varietyItems = data?.filter(prod => prod.type === 'variety')
+      this.bagItems = data?.filter(prod => prod.type === 'bags')
     })
 
 

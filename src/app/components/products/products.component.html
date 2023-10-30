@@ -1,5 +1,5 @@
 <section *ngIf="isLoad" class="mycarousel w-100 d-flex justify-content-center">
-  <carousel [isAnimated]="true" class="d-flex w-100 overflow-hidden" >
+  <carousel [isAnimated]="true" class="d-flex w-100 overflow-hidden">
     <slide>
       <img src="../../../assets/images/promotions/banner psd smartwatch.png" alt="first slide" style="display: block; width: 100vw; object-fit: contain; aspect-ratio: 16/9;  cursor: pointer;" (click)="goToLink($event)" data-js="smartwatch">
     </slide>
@@ -27,13 +27,21 @@
       <li *ngFor="let item of eletronicItems">
         <app-product-card [theCard]="item"></app-product-card>
       </li>
-
     </ul>
 </div>
   <div class="product-container container" id="variety">
     <h2 class="text-center text-lg-start">Variados</h2>
     <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
       <li *ngFor="let item of varietyItems">
+        <app-product-card [theCard]="item"></app-product-card>
+      </li>
+
+    </ul>
+  </div>
+  <div class="product-container container" id="variety">
+    <h2 class="text-center text-lg-start">Bolsas</h2>
+    <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
+      <li *ngFor="let item of bagItems">
         <app-product-card [theCard]="item"></app-product-card>
       </li>
 

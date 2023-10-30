@@ -61,7 +61,7 @@ export class HeaderComponent {
 
     this.routeSubs = this.event.routerEvent.subscribe(data => this.isOnRoute = data)
   }
-  
+
   sendRequest() {
     this.message.filterArrayProducts(this.cartList)
   }
@@ -98,6 +98,7 @@ export class HeaderComponent {
   }
 
   sendFilter(target: any) {
+    this.isMenuOpen = !this.isMenuOpen
     let string = target.value
     target.value = ''
     this.filter.sendFilterEvent.emit(string)
