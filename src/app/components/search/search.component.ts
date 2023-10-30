@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Products } from './../../../types/product.interface';
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -18,10 +19,8 @@ export class SearchComponent {
 
 
   constructor(private getItem: getItemsService,
-              private filter: GetFilterSearchService) {
-
-
-    console.log(this.arr);
+              private filter: GetFilterSearchService,
+              private router: Router) {
 
     this.subs = this.filter.sendFilterEvent.subscribe(() => {
       this.ngOnInit()
@@ -29,11 +28,16 @@ export class SearchComponent {
   }
 
   ngOnInit() {
+
     this.arr = this.filter.arrFiltered
     this.isLoad = false
     setTimeout(() => {
       this.isLoad = true
     }, 2000);
+
+    if(this.arr.length === 0) {
+      this.router.navigate(['not-found'])
+    }
   }
 
 
