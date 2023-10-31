@@ -24,6 +24,8 @@ export class CategoriesComponent {
               private routerEvent: EventsService) {}
 
   ngOnInit() {
+
+
     this.category = this.active.snapshot.paramMap.get('cat')
 
     this.subscribe = this.service.getArr()?.subscribe(data => {
@@ -31,6 +33,7 @@ export class CategoriesComponent {
       this.isLoad = true
 
       this.categoryItems = data.filter(({type}) => type === this.category)
+
     })
 
   this.routerEvent.routerEvent.emit(false)
@@ -51,5 +54,24 @@ export class CategoriesComponent {
       this.ngOnInit()
     }
   }
+
+  sortArrayCategories(select: string) {
+    console.log(select);
+
+    this.categoryItems = this.categoryItems.sort((a: any, b: any) => {
+
+      if(select === 'min') {
+        return a.price - b.price
+      }
+
+      return b.price - a.price
+    })
+
+    this.isLoad = false
+    setTimeout(() => {
+      this.isLoad = true
+    }, 1000);
+  }
+
 
 }

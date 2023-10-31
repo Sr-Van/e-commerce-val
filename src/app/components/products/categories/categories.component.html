@@ -1,9 +1,20 @@
 <section *ngIf="isLoad" class="container d-flex flex-column gap-3">
   <div class="d-flex flex-wrap gap-3 mb-3 align-items-center justify-content-center justify-content-lg-start">
     <span class="text-center text-lg-start">Todos os {{ category | translate}}</span>
-    <div>
-      <input class="form-control" type="text" placeholder="filtro" (keyup)="filterCategory(filterInput.value)" #filterInput>
-      <i></i>
+    <div class="d-flex gap-1 flex-column flex-sm-row flex">
+      <input class="form-control" type="text" placeholder="filtro" (keyup)="filterCategory(filterInput.value)" #filterInput style="width: 100%;">
+
+      <select name="filter" id="select-filter" class="form-select" (change)="sortArrayCategories(select.value)" #select>
+        <option selected >filtrar por</option>
+        <option value="min">
+          Menor preço
+          &#xf160;
+        </option>
+        <option value="max">
+          Maior preço
+          &#xf161;
+        </option>
+      </select>
     </div>
   </div>
 

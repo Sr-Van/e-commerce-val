@@ -11,3 +11,7 @@ section {
 span {
   color: #06125b;
 }
+
+select option:not(span) {
+  font-family: 'Poppins', 'FontAwesome', 'sans-serif'
+}
