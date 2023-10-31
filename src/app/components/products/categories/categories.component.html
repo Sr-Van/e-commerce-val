@@ -1,5 +1,12 @@
 <section *ngIf="isLoad" class="container d-flex flex-column gap-3">
-  <span class="container text-center text-lg-start">Todos os {{ category | translate}}</span>
+  <div class="d-flex flex-wrap gap-3 mb-3 align-items-center justify-content-center justify-content-lg-start">
+    <span class="text-center text-lg-start">Todos os {{ category | translate}}</span>
+    <div>
+      <input class="form-control" type="text" placeholder="filtro" (keyup)="filterCategory(filterInput.value)" #filterInput>
+      <i></i>
+    </div>
+  </div>
+
   <div class="product-container container" id="variety">
     <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
       <li *ngFor="let item of categoryItems">

@@ -37,4 +37,19 @@ export class CategoriesComponent {
 
   }
 
+  filterCategory(filter: string) {
+
+    this.categoryItems = this.categoryItems.filter(( prod => {
+      return prod.product.toLowerCase().includes(filter.toLowerCase())
+    }))
+
+    if(filter.length === 0) {
+      this.ngOnInit()
+    }
+
+    if(this.categoryItems.length < 1) {
+      this.ngOnInit()
+    }
+  }
+
 }
