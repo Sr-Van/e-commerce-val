@@ -1,12 +1,10 @@
-.mycarousel {
-  padding-top: 70px;
-}
+
 .product-container h2 {
   padding: 1rem  0 !important;
   width: 100%;
 }
 
-.product-container a {
+.product-container .product-head > a{
   cursor: pointer;
   font-size: .8rem;
 }
@@ -21,31 +19,21 @@ slide img {
   height: 20vh !important;
 }
 
-@media(min-width: 420px) {
-  .mycarousel {
-    padding: 4rem 0;
-  }
-}
-
 
 @media(min-width: 765px) {
-  .mycarousel {
-    padding: 0;
-  }
+
   slide img {
-    height: 40vh !important;
+    height: 35vh !important;
   }
   .product-container h2 {
     padding: 3rem  0 !important;
     width: fit-content;
   }
-}
-
-@media(min-width: 1024px) {
-  .mycarousel {
-    padding: 80px 0;
+  .product-container .product-head > a{
+    font-size: 1rem;
   }
 }
+
 
 
 

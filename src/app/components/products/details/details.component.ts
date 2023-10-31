@@ -13,6 +13,8 @@ import { EventsService } from 'src/app/services/events.service';
 })
 export class DetailsComponent {
 
+  typeProdArr: Products[] = []
+
   subscribe: Subscription
 
   productName: any;
@@ -36,9 +38,19 @@ export class DetailsComponent {
     this.eventRouter.routerEvent.emit(false)
     this.productName = this.activeRoute.snapshot.paramMap.get('productName')
 
+    this.getInfosSubscribe()
+
+    this.subscribe = this.items.sendEvent.subscribe(() => {
+      this.isClicked = this.items.verifyCart(this.product._id)
+      this.verifyCard()
+    })
+
+
+  }
+
+  getInfosSubscribe() {
     this.subscribe = this.items.getArr()?.subscribe(arr => {
       this.product = arr.filter(({product}) => product === this.productName)[0]
-      console.log(this.product);
 
       this.source = `../../../assets/images/${this.product.product}.jpg`;
       this.dataId = this.product._id;
@@ -47,16 +59,11 @@ export class DetailsComponent {
 
       this.productType = this.product.type
 
+      this.typeProdArr = arr.filter(prod => prod.type === this.productType)
+
       this.isClicked = this.items.verifyCart(this.product._id)
       this.verifyCard()
     })
-
-    this.subscribe = this.items.sendEvent.subscribe(() => {
-      this.isClicked = this.items.verifyCart(this.product._id)
-      this.verifyCard()
-    })
-
-
   }
 
   toggleCart(event: any) {
@@ -84,8 +91,17 @@ export class DetailsComponent {
     this.cartMessage = 'Adicionar';
   }
 
-  goToLink() {
+  goToLinkCategory() {
     this.router.navigate([`/products/categoria/${this.productType}`])
+  }
+
+  goToLink(event: any) {
+    this.router.navigate([`/products`])
+    this.isLoad = false
+    setTimeout(() => {
+      this.router.navigate([`/products/${event.target.dataset.js}`])
+    }, 300);
+    this.getInfosSubscribe()
   }
 
   ngOnDestroy () {

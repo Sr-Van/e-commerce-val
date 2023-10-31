@@ -1,4 +1,13 @@
 <div class="container" [hidden]="!isLoad">
+  <ul class="interest list-unstyled w-100 d-flex flex-wrap gap-1 justify-content-start">
+    <li>
+      <p *ngIf="typeProdArr.length >= 5" class="m-0">items parecidos: </p>
+    </li>
+    <li class="link" *ngFor="let item of typeProdArr.slice(5,10)">
+      <a [attr.data-js]="item.product" (click)="goToLink($event)">{{item.product | product}}</a>
+    </li>
+
+  </ul>
   <div class="prod">
     <div class="d-flex flex-wrap w-100 justify-content-center justify-content-lg-evenly gap-5">
       <div class="product">
@@ -25,7 +34,7 @@
             }" (click)="toggleCart($event)" [attr.data-id]="dataId" class="btn my-btn text-center"
             style="min-width: fit-content; border: none !important;">{{ cartMessage }}
           </button>
-          <a class="text-center" (click)="goToLink()"
+          <a class="text-center" (click)="goToLinkCategory()"
           style="cursor: pointer;">Ver mais {{ product.type | translate }}</a>
         </div>
       </div>

@@ -77,15 +77,10 @@ export class HeaderComponent {
   }
 
   activeHover(el: any) {
-    console.log('entrou');
-
     el.dataset.js = 'hovered'
   }
 
   deactiveHover(el: any, father:any) {
-    console.log('saiu');
-    console.log(father);
-
     father.dataset.js = 'closed'
     el.dataset.js = 'nohovered'
   }

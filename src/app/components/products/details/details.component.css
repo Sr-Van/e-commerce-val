@@ -8,6 +8,16 @@
   overflow: hidden;
 }
 
+.interest {
+  font-size: .8rem;
+  color: #bebebe;
+  
+  .link a {
+    cursor: pointer;
+    text-decoration: underline !important;
+  }
+}
+
 .body-title {
   display: none;
 }
