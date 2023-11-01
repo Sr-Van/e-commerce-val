@@ -15,16 +15,9 @@
   gap: 1rem;
 }
 
-slide img {
-  height: 20vh !important;
-}
-
 
 @media(min-width: 765px) {
 
-  slide img {
-    height: 35vh !important;
-  }
   .product-container h2 {
     padding: 3rem  0 !important;
     width: fit-content;

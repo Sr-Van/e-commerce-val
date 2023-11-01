@@ -3,8 +3,12 @@
   background-color: rgb(6, 26, 153, 0.9);
   color: #fff;
   transition: all 800ms ease;
+
+  font-size: .7rem;
 }
 .navbar-open {
+  position: fixed;
+  top: 0;
   box-shadow: 0 1px 3px 1px rgb(182, 182, 182);
 }
 
@@ -45,8 +49,11 @@
   color: #000000 !important;
 }
 
-.active-link {
-  border-bottom: 1px solid #bebebe;
+.logo {
+
+  & h1 {
+    filter: drop-shadow(0 1px 1px black);
+  }
 }
 
 
@@ -60,14 +67,31 @@
   .carousel {
       width: 30% !important;
   }
+
+  .logo {
+    & img {
+      filter: drop-shadow(0 1px 1px white);
+    }
+  }
 }
 
 @media(min-width: 1000px) {
+  .navbar {
+    font-size: 1rem;
+  }
   .navbar div > .fa-solid {
     display: none;
   }
   .navbar ul {
   display: flex;
+  }
+
+  .logo {
+    max-width: 300px;
+    margin: 0 !important;
+    & img {
+      width: 3.5rem !important;
+    }
   }
 }
 

@@ -15,8 +15,8 @@ export class GetFilterSearchService {
   subscribe: Subscription
 
   filterSearch(searched: string, arr: Products[]) {
-    this.arrFiltered = arr.filter(( client => {
-      return client.product.toLowerCase().includes(searched.toLowerCase())
+    this.arrFiltered = arr.filter(( prod => {
+      return prod.product.toLowerCase().includes(searched.toLowerCase())
     }))
     if(this.arrFiltered.length > 0) {
       this.route.navigate(['search'])

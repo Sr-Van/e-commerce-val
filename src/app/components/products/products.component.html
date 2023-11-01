@@ -1,13 +1,13 @@
 <section *ngIf="isLoad" class="mycarousel w-100 d-flex justify-content-center">
-  <carousel [isAnimated]="true" class="d-flex w-100 overflow-hidden">
+  <carousel [showIndicators]="false" [isAnimated]="true" class="d-flex w-100 overflow-hidden justify-content-center">
     <slide>
-      <img src="../../../assets/images/promotions/banner psd smartwatch.png" alt="first slide" style="display: block; width: 100vw; object-fit: contain; aspect-ratio: 16/9;  cursor: pointer;" (click)="goToLink($event)" data-js="smartwatch">
+      <img class="w-100" src="../../../assets/images/promotions/banner psd smartwatch.png" alt="first slide" style="display: block; cursor: pointer; object-fit: contain;" (click)="goToLink($event)" data-js="smartwatch">
     </slide>
     <slide>
-      <img src="../../../assets/images/promotions/banner psd garrafa.png" alt="second slide" style="display: block; width: 100vw;object-fit: contain; aspect-ratio: 16/9; cursor: pointer;" (click)="goToLink($event)" data-js="garrafa_dagua">
+      <img class="w-100" src="../../../assets/images/promotions/banner psd garrafa.png" alt="second slide" style="display: block;  cursor: pointer; object-fit: contain;" (click)="goToLink($event)" data-js="garrafa_dagua">
     </slide>
     <slide>
-      <img src="../../../assets/images/promotions/banner psd variedades.png" alt="third slide" style="display: block; width: 100vw; object-fit: contain; aspect-ratio: 16/9; cursor: pointer;" (click)="goToLinkCategorie($event)" data-js="variety">
+      <img class="w-100" src="../../../assets/images/promotions/banner psd variedades.png" alt="third slide" style="display: block;   cursor: pointer; object-fit: contain;" (click)="goToLinkCategorie($event)" data-js="variety">
     </slide>
   </carousel>
 </section>
@@ -47,7 +47,7 @@
 
     </ul>
   </div>
-  <div class="product-container container" id="variety">
+  <div class="product-container container" id="bags">
     <div class="product-head d-flex flex-wrap gap-3 mb-3 align-items-center justify-content-center justify-content-lg-start">
       <h2 class="text-center text-lg-start">Bolsas</h2>
       <a class=" text-center text-lg-start text-decoration-none" (click)="goToLinkCategorie($event)" data-js="bags">ver todos</a>
