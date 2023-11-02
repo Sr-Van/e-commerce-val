@@ -26,6 +26,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CategoriesComponent } from './components/products/categories/categories.component';
 import { TranslatePipe } from './pipes/translate.pipe';
 import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
+import { PaymentMethodsComponent } from './components/payment-methods/payment-methods.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CookieConsentComponent } from './components/cookie-consent/cookie-conse
     DetailsComponent,
     CategoriesComponent,
     TranslatePipe,
-    CookieConsentComponent
+    CookieConsentComponent,
+    PaymentMethodsComponent
   ],
   imports: [
     BrowserModule,

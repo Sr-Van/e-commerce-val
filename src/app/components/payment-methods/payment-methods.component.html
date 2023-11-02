@@ -1,0 +1,12 @@
+
+<div class="container">
+  <ul class="w-100 d-flex gap-2 justify-content-between flex-column flex-xl-row">
+    <li *ngFor="let item of payments" class="list-group-item d-flex flex-column">
+      <div class="d-flex gap-2 align-items-center">
+        <i class="{{ item.icone }} color-terciary"></i>
+        <b class="color-text">{{ item.metodo }}</b>
+      </div>
+      <small>{{ item.texto }}</small>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,26 @@
+ul {
+  margin-top: 2rem;
+  padding-left: 0 !important;
+  border: 1px solid rgb(0, 0, 0, .12);
+
+  border-radius: .3rem;
+  background-color: #fff;
+}
+
+ul li {
+  width: 100%;
+  padding: 2rem;
+  border-bottom: 1px solid rgb(0, 0, 0, .12);
+}
+
+
+@media (min-width: 1200px) {
+  ul li {
+    border-bottom: 0;
+  }
+  ul li:nth-child(2), ul li:nth-child(3), ul li:nth-child(4) {
+    border-left: 1px solid rgb(0, 0, 0, .12);
+    border-radius: 0;
+  }
+}
+
