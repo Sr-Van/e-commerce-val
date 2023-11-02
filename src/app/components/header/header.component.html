@@ -21,7 +21,7 @@
         </div>
       </li>
       <li class="nav-item">
-          <a class="nav-link" routerLink="/products" routerLinkActive="active-link" >Produtos</a>
+          <a class="nav-link" routerLink="/products" routerLinkActive="active-link" (click)="emitEvent()">Produtos</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" (click)="scrollToId('footer')" style="cursor: pointer;">Contato</a>

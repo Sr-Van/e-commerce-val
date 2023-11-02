@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+
 import { EventsService } from 'src/app/services/events.service';
 import { getItemsService } from 'src/app/services/get-items.service';
+
 import { Products } from 'src/types/product.interface';
 
 @Component({
@@ -53,6 +55,7 @@ export class CategoriesComponent {
     if(this.categoryItems.length < 1) {
       this.ngOnInit()
     }
+
   }
 
   sortArrayCategories(select: string) {
@@ -71,6 +74,9 @@ export class CategoriesComponent {
     setTimeout(() => {
       this.isLoad = true
     }, 1000);
+
+
+    this.routerEvent.routerEvent.emit(false)
   }
 
 

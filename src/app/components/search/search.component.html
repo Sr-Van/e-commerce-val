@@ -1,6 +1,7 @@
 <section *ngIf="isLoad" class="products d-flex flex-column gap-4 container position-relative" id="products">
-  <div class="product-container container">
-    <h2 class="text-center text-lg-start">Encontrados</h2>
+  <div class="product-container container d-flex flex-column gap-2">
+    <h2 class="text-center text-lg-start mb-3">Encontrados para "{{ searched }}"</h2>
+    <span class="pb-3">{{ arr.length }} resultados.</span>
     <ul class="eletronics product-list justify-content-center justify-content-lg-start list-unstyled" >
       <li *ngFor="let item of arr">
         <app-product-card [theCard]="item"></app-product-card>

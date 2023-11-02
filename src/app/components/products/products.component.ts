@@ -1,7 +1,10 @@
-import { Products } from './../../../types/product.interface';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
+
+import { Products } from './../../../types/product.interface';
+
 import { EventsService } from 'src/app/services/events.service';
 import { getItemsService } from 'src/app/services/get-items.service';
 
@@ -25,9 +28,12 @@ export class ProductsComponent {
 
   constructor(private service: getItemsService,
               private router: Router,
-              private eventRouter: EventsService) {}
+              private eventRouter: EventsService,
+              private titleService: Title) {}
 
   ngOnInit() {
+
+    this.titleService.setTitle('Val Magazine - Tem de tudo!')
 
     this.subscribe = this.service.getArr()?.subscribe(data => {
       this.itemLists = data

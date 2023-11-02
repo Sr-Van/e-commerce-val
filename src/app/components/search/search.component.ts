@@ -3,8 +3,9 @@ import { Products } from './../../../types/product.interface';
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GetFilterSearchService } from 'src/app/services/get-filter-search.service';
-import { getItemsService } from 'src/app/services/get-items.service';
 
+
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-search',
@@ -16,9 +17,10 @@ export class SearchComponent {
   arr: Products[] = []
   isLoad: boolean;
   subs: Subscription
+  searched: string = ''
 
 
-  constructor(private getItem: getItemsService,
+  constructor(private titleService: Title,
               private filter: GetFilterSearchService,
               private router: Router) {
 
@@ -28,6 +30,11 @@ export class SearchComponent {
   }
 
   ngOnInit() {
+    this.searched = this.filter.searchString
+
+    this.titleService.setTitle(`${this.searched} - Val magazine`)
+    console.log(this.searched);
+
 
     this.arr = this.filter.arrFiltered
     this.isLoad = false

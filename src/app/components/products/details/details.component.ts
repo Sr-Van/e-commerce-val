@@ -1,10 +1,13 @@
-import { Products } from 'src/types/product.interface';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { getItemsService } from 'src/app/services/get-items.service';
 import { Subscription } from 'rxjs';
-import { query } from '@angular/animations';
+import { Title } from '@angular/platform-browser';
+
+import { Products } from 'src/types/product.interface';
+
+import { getItemsService } from 'src/app/services/get-items.service';
 import { EventsService } from 'src/app/services/events.service';
+import { SendMessageService } from 'src/app/services/send-message.service';
 
 @Component({
   selector: 'app-details',
@@ -32,11 +35,16 @@ export class DetailsComponent {
   constructor(private activeRoute: ActivatedRoute,
               private items: getItemsService,
               private router: Router,
-              private eventRouter: EventsService) {}
+              private eventRouter: EventsService,
+              private titleService: Title,
+              private send: SendMessageService) {}
 
   ngOnInit() {
+
     this.eventRouter.routerEvent.emit(false)
     this.productName = this.activeRoute.snapshot.paramMap.get('productName')
+    this.setTitlePage(this.productName)
+
 
     this.getInfosSubscribe()
 
@@ -102,6 +110,13 @@ export class DetailsComponent {
       this.router.navigate([`/products/${event.target.dataset.js}`])
     }, 300);
     this.getInfosSubscribe()
+  }
+
+  setTitlePage(prod: any) {
+    let prodFormated = this.send.formatProduct(prod)
+    console.log(prodFormated);
+
+    this.titleService.setTitle(`${prodFormated} - Val Magazine`)
   }
 
   ngOnDestroy () {

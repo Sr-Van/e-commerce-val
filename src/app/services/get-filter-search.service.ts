@@ -13,6 +13,7 @@ export class GetFilterSearchService {
   arr: Products[] = []
   arrFiltered: Products[] = []
   subscribe: Subscription
+  searchString: string
 
   filterSearch(searched: string, arr: Products[]) {
     this.arrFiltered = arr.filter(( prod => {
@@ -29,6 +30,9 @@ export class GetFilterSearchService {
   constructor(private getItem: getItemsService,
               private route: Router) {
     this.subscribe = this.sendFilterEvent.subscribe(str => {
+
+      this.searchString = str
+
       this.filterSearch(str, this.arr)
     })
     getItem.getArr().subscribe(data => {

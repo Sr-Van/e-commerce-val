@@ -1,6 +1,6 @@
 .navbar {
   backdrop-filter: blur(6px);
-  background-color: rgb(6, 26, 153, 0.9);
+  background-color: #061a99e6;
   color: #fff;
   transition: all 800ms ease;
 

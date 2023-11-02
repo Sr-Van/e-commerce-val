@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 
 import { HttpClientModule } from '@angular/common/http'
@@ -48,6 +49,7 @@ import { CookieConsentComponent } from './components/cookie-consent/cookie-conse
     AppRoutingModule,
     HttpClientModule,
     TooltipModule,
+    FormsModule,
     CarouselModule.forRoot()
   ],
   providers: [getItemsService],

@@ -85,6 +85,10 @@ export class HeaderComponent {
     el.dataset.js = 'nohovered'
   }
 
+  emitEvent() {
+    this.event.routerEvent.emit(false)
+  }
+
 
   scrollToId(el: any) {
     (document.getElementById(el) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
