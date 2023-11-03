@@ -6,6 +6,8 @@ footer {
 
   font-size: .7rem;
   padding: 2rem 10px;
+  position: relative;
+  bottom: 0;
 }
 
 footer a {

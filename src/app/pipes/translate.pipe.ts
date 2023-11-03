@@ -6,10 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TranslatePipe implements PipeTransform {
 
   tranlates: any = {
-    acessories : 'acessórios',
-    eletronics : 'eletrônicos',
-    variety : 'variedades',
-    bags : 'bolsas'
+    acessories : 'Acessórios',
+    eletronics : 'Eletrônicos',
+    variety : 'Variedades',
+    bags : 'Bolsas'
   }
 
   transform(value: any, ...args: unknown[]): any {

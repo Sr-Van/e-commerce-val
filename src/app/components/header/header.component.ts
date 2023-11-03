@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EventsService } from 'src/app/services/events.service';
 import { GetFilterSearchService } from 'src/app/services/get-filter-search.service';
@@ -27,12 +28,16 @@ export class HeaderComponent {
   eventSearch: Subscription
   routeSubs: Subscription
 
+
+  typeList: any[] = ['acessories', 'bags', 'eletronics', 'variety']
+
   menuEvent = new EventEmitter<boolean>()
 
   constructor(private service: getItemsService,
               private message: SendMessageService,
               private filter: GetFilterSearchService,
-              private event: EventsService) {
+              private event: EventsService,
+              private router: Router) {
                 this.menuEvent.subscribe(bool => this.isMenuOpen = bool)
               }
 
@@ -101,6 +106,16 @@ export class HeaderComponent {
     let string = target.value
     target.value = ''
     this.filter.sendFilterEvent.emit(string)
+  }
+
+  goToLinkCategory(event: any) {
+    let category = event.target.dataset.js
+
+    setTimeout(() => {
+      this.router.navigate([`/products/categoria/${category}`])
+    }, 100);
+
+    this.router.navigate([`/products/`])
   }
 
 }

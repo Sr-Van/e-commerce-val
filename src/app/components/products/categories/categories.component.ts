@@ -1,6 +1,7 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 import { EventsService } from 'src/app/services/events.service';
 import { getItemsService } from 'src/app/services/get-items.service';
@@ -20,10 +21,18 @@ export class CategoriesComponent {
 
   isLoad: boolean = false
 
+  tranlates: any = {
+    acessories : 'Acessórios',
+    eletronics : 'Eletrônicos',
+    variety : 'Variedades',
+    bags : 'Bolsas'
+  }
+
 
   constructor(private active: ActivatedRoute,
               private service: getItemsService,
-              private routerEvent: EventsService) {}
+              private routerEvent: EventsService,
+              private titleService: Title) {}
 
   ngOnInit() {
 
@@ -35,6 +44,8 @@ export class CategoriesComponent {
       this.isLoad = true
 
       this.categoryItems = data.filter(({type}) => type === this.category)
+
+      this.titleService.setTitle(`${this.tranlates[this.category]} - Val Magazine`)
 
     })
 

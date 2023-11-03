@@ -1,4 +1,4 @@
-<nav [class.navbar-open]="isMenuOpen" class="navbar d-flex flex-column w-100 top-0 z-3  flex-md-row justify-content-between p-lg-3 color-bg-primary gap-3 ">
+<nav [class.navbar-open]="isMenuOpen" class="navbar d-flex flex-column w-100 top-0 z-3  flex-md-row justify-content-center px-lg-3 color-bg-primary gap-3 ">
   <div class="d-flex justify-content-center align-items-center">
       <i (click)="toggleMenu()" class="fa-solid fa-bars"></i>
       <div class="logo d-flex align-items-center justify-content-center justify-content-md-start" style="margin-right: 40px;" routerLink="/">
@@ -6,8 +6,15 @@
         <h1 class="color-secondary" style="cursor: pointer; font-size: 1.5rem; margin-bottom: 0 !important; font-weight: 700;">Val Magazine</h1>
       </div>
   </div>
-  <ul [class.hidden]="!isMenuOpen"  #menuList class="navbar-nav flex-column flex-md-row flex-column-reverse gap-1 align-items-center gap-md-5">
+  <ul [class.hidden]="!isMenuOpen"  #menuList class="navbar-nav flex-column flex-lg-row flex-column-reverse gap-1 align-items-center gap-md-5 w-75 justify-content-center">
 
+      <li class="nav-item w-100 d-flex justify-content-center">
+        <div class="input-group w-100">
+            <input class="form-control" type="text" placeholder="Buscar produtos..." #search>
+            <button class="btn color-bg-terciary" (click)="sendFilter(search)">
+              <i class="fa-solid fa-magnifying-glass" style="font-size: 1rem; color: #fff;"></i></button>
+        </div>
+      </li>
       <li class="nav-item" *ngIf="isOnRoute">
         <div class="my-dropdown nav-link" data-js="closed" (mouseover)="showDropdown(dropdown)" (mouseout)="closeDropdown(dropdown, content)" #dropdown>
           <button class="dropbtn">Categorias</button>
@@ -34,15 +41,15 @@
               </span>
           </a>
       </li>
-      <li class="nav-item">
-          <div class="input-group">
-              <input class="form-control" type="text" placeholder="Buscar produtos..." #search>
-              <button class="btn color-bg-terciary" (click)="sendFilter(search)">
-                <i class="fa-solid fa-magnifying-glass" style="font-size: 1rem; color: #fff;"></i></button>
-          </div>
-      </li>
+
   </ul>
 </nav>
+
+<div class="scroller w-100 color-bg-primary">
+  <ul class="tag-list scroller_inner px-2 justify-content-start justify-content-md-center">
+    <li class="list-item" *ngFor="let type of typeList" style="cursor: pointer;" [attr.data-js]="type" (click)="goToLinkCategory($event)">{{ type | translate }}</li>
+  </ul>
+</div>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
