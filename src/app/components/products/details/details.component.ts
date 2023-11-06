@@ -17,6 +17,7 @@ import { SendMessageService } from 'src/app/services/send-message.service';
 export class DetailsComponent {
 
   typeProdArr: Products[] = []
+  randomItemArr: any[] = []
 
   subscribe: Subscription
 
@@ -53,7 +54,6 @@ export class DetailsComponent {
       this.verifyCard()
     })
 
-
   }
 
   getInfosSubscribe() {
@@ -68,6 +68,12 @@ export class DetailsComponent {
       this.productType = this.product.type
 
       this.typeProdArr = arr.filter(prod => prod.type === this.productType)
+
+      let indexProd = this.typeProdArr
+        .map(({product}) => product)
+        .indexOf(this.product.product)
+
+      this.randomItemArr = this.getRandomArr(this.typeProdArr, indexProd)
 
       this.isClicked = this.items.verifyCart(this.product._id)
       this.verifyCard()
@@ -114,9 +120,27 @@ export class DetailsComponent {
 
   setTitlePage(prod: any) {
     let prodFormated = this.send.formatProduct(prod)
-    console.log(prodFormated);
 
     this.titleService.setTitle(`${prodFormated} - Val Magazine`)
+  }
+
+  getRandomArr(arr: any, index: number) {
+    let newArr = []
+    let numbers: any = [index]
+    let max = 5
+    let i
+
+    for(i=0; i < max; i++) {
+      let newNum = Math.floor(Math.random() * arr.length)
+      if(!numbers.includes(newNum)) {
+        numbers.push(newNum)
+        newArr.push(arr[newNum])
+      } else {
+        i--
+      }
+    }
+
+    return newArr
   }
 
   ngOnDestroy () {

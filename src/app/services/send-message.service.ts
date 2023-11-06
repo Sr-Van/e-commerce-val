@@ -72,14 +72,14 @@ export class SendMessageService {
       }
 
 
-      /* this.http.post(this.#urlVisit, data).subscribe(
+      this.http.post(this.#urlVisit, data).subscribe(
           (response) => {
             console.log('visita adicionada', response);
           },
           (error) => {
             console.error('Erro ao enviar a visita.', error);
           }
-        ) */
+        )
     }
   }
 

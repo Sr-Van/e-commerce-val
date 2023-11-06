@@ -1,11 +1,16 @@
 .container {
-  height: auto;
-  width: auto;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
 
   padding: 2rem .7rem;
   overflow: hidden;
+  background-color: #fff;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .interest {
@@ -60,6 +65,9 @@ h1 {
 }
 
 @media(min-width: 765px) {
+  .container {
+    background-color: transparent;
+  }
   .prod {
     padding: 3rem;
     min-width: 270px;

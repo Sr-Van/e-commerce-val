@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class PaymentMethodsComponent {
 
   payments: any = [
-    {metodo: 'Á vista',
+    {metodo: 'À vista',
     texto: 'Pagamento rápido',
     icone: 'fa-solid fa-dollar-sign'},
     {metodo: 'Cartão de crédito',

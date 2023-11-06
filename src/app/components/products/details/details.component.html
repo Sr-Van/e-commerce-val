@@ -42,4 +42,13 @@
   </div>
 </div>
 
+<div class="recomended container">
+  <h4 class="py-3 text-center text-lg-start">Você vai gostar:</h4>
+  <ul class="eletronics product-list justify-content-center justify-content-lg-start justify-content-xxl-center list-unstyled">
+    <li *ngFor="let item of randomItemArr">
+      <app-product-card [theCard]="item"></app-product-card>
+    </li>
+  </ul>
+</div>
+
 <app-loading [hidden]="isLoad"></app-loading>
