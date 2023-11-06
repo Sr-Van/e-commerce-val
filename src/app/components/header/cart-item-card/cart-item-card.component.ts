@@ -37,7 +37,6 @@ export class CartItemCardComponent {
 
     const id = event.target.getAttribute('data-id')
 
-    console.log(id);
 
 
     const indexToDelete = this.items
