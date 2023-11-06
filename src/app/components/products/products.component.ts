@@ -10,9 +10,9 @@ import { getItemsService } from 'src/app/services/get-items.service';
 
 
 @Component({
-  selector: 'app-Products',
-  templateUrl: './Products.component.html',
-  styleUrls: ['./Products.component.css'],
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
 
