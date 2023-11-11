@@ -75,7 +75,10 @@ export class ProductCardComponent {
   }
 
   goToLink() {
-    this.router.navigate([`/products/${this.card.product}`])
+    setTimeout(() => {
+      this.router.navigate([`/products/${this.card.product}`])
+    }, 100);
+    this.router.navigate([`/products`])
   }
 
 

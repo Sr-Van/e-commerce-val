@@ -9,6 +9,8 @@ import { Injectable } from '@angular/core';
 })
 export class SendMessageService {
 
+  public date = new Date ()
+
   private text: string;
   #number:number = 557996441437
   #url: string = 'https://my-api-six-beta.vercel.app/new-register'
@@ -35,19 +37,25 @@ export class SendMessageService {
 
     this.text = `Olá, fiz um pedido no seu site com os produtos: ${str} o valor total do pedido foi *R$${totalPrice},00* gostaria de saber quais estão disponiveis para fazer a compra!`
 
+    console.log(productsToCookies);
+
+
     this.sendMethods(productsToCookies)
 
 
   }
 
   sendMethods(prod: string) {
+    this.userConsented = this.cookies.get('userConsented') === 'true'
+
     if(this.userConsented) {
       this.cookies.set('pedido', prod);
     }
 
     const data = {
       title: 'client',
-      pedido: this.cookies.get('pedido')
+      pedido: this.cookies.get('pedido'),
+      data: this.date
     }
 
 
@@ -68,7 +76,8 @@ export class SendMessageService {
     if(this.userConsented) {
       const data = {
         title: 'new visit',
-        visit: this.cookies.get('visited')
+        visit: this.cookies.get('visited'),
+        date: this.date
       }
 
 
