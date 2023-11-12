@@ -1,0 +1,28 @@
+span, p, b {
+  font-size: .8rem;
+}
+
+
+.cart-footer {
+  width: 100%;
+}
+
+@media(min-width: 768px) {
+  .cart-footer {
+    width: 90%;
+    background-color: #fff;
+    border-radius: 0.375rem;
+  }
+}
+
+@media(min-width: 1000px) {
+  .cart-footer {
+    width: 50%;
+  }
+}
+
+@media(min-height: 800px) {
+  .cartlist {
+    height: 100vh;
+  }
+}
