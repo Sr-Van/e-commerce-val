@@ -10,19 +10,17 @@ import { AppComponent } from './app.component';
 
 
 
-import { ProductPipe } from './pipes/product.pipe';
 import { getItemsService } from './services/get-items.service';
 
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { TranslatePipe } from './pipes/translate.pipe';
 
 import { ComponentsModule } from './components/components/components.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

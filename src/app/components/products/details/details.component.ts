@@ -119,7 +119,7 @@ export class DetailsComponent {
   }
 
   setTitlePage(prod: any) {
-    let prodFormated = this.send.formatProduct(prod)
+    let prodFormated = this.send.formatString(prod)
 
     this.titleService.setTitle(`${prodFormated} - Val Magazine`)
   }

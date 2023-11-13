@@ -52,24 +52,17 @@ export class HeaderComponent {
   ngOnInit() {
     this.service.getDb()
 
-    this.cartList = this.service.cart
-    this.lengthCart = this.cartList?.length
-    this.totalPrice = this.service.getCartPrice(this.cartList)
+    this.lengthCart = this.service.cart.length
 
     this.subscribe = this.service.sendEvent.subscribe(() => {
-      this.cartList = this.service.cart
 
-      this.totalPrice = this.service.getCartPrice(this.cartList)
-      this.lengthCart = this.cartList?.length
+      this.lengthCart = this.service.cart.length
     })
 
 
     this.routeSubs = this.event.routerEvent.subscribe(data => this.isOnRoute = data)
   }
 
-  sendRequest() {
-    this.message.filterArrayProducts(this.cartList)
-  }
 
   showDropdown(el: any) {
     el.dataset.js = 'opened'
@@ -116,6 +109,10 @@ export class HeaderComponent {
     }, 100);
 
     this.router.navigate([`/products/`])
+  }
+
+  goToLink(str: string) {
+    this.router.navigate([`/${str}`])
   }
 
 }

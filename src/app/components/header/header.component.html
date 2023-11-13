@@ -34,7 +34,7 @@
           <a class="nav-link" (click)="scrollToId('footer')" style="cursor: pointer;">Contato</a>
       </li>
       <li class="nav-item pt-3 pt-lg-0">
-          <a class="nav-link position-relative" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <a class="nav-link position-relative" (click)="goToLink('cart')">
               <i class="fa-solid fa-cart-shopping"></i>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill color-bg-terciary">
                   {{ lengthCart }}
@@ -51,28 +51,4 @@
   </ul>
 </div>
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrinho</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body h-50">
-    <ul class="w-100 cart-products list-unstyled d-flex flex-column gap-5 justify-content-center align-items-center">
-      <li *ngFor="let item of cartList">
-        <app-cart-item-card [item]="item"></app-cart-item-card>
-      </li>
 
-    </ul>
-  </div>
-  <ul class="cart-footer d-flex flex-column align-items-center h-25 list-unstyled w-100 gap-1 mb-0">
-      <li class="d-flex justify-content-between w-100 px-3 pt-3">
-        <p class="m-0">Total:</p> <b class="total-value">{{ totalPrice | currency: 'BRL' }}</b>
-      </li>
-      <li class="d-flex justify-content-between w-100 px-3">
-        <p>entrega:</p> <b class="text-success">gratuita para recanto verde</b>
-      </li>
-      <li class="d-flex justify-content-center w-100 px-3">
-        <button class="btn color-bg-terciary w-75" (click)="sendRequest()">Continuar a compra</button>
-      </li>
-  </ul>
-</div>

@@ -17,6 +17,7 @@ import { NotFoundComponent } from '../search/not-found/not-found.component';
 import { CategoriesComponent } from '../products/categories/categories.component';
 import { DetailsComponent } from '../products/details/details.component';
 import { CartItemCardComponent } from '../header/cart-item-card/cart-item-card.component';
+import { CartComponent } from '../cart/cart.component';
 
 
 import { ProductPipe } from 'src/app/pipes/product.pipe';
@@ -46,7 +47,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     DetailsComponent,
     CartItemCardComponent,
     ProductPipe,
-    TranslatePipe
+    TranslatePipe,
+    CartComponent
   ],
   imports: [
     CommonModule,
@@ -69,7 +71,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     NotFoundComponent,
     CategoriesComponent,
     DetailsComponent,
-    CartItemCardComponent
+    CartItemCardComponent,
+    CartComponent
   ],
   providers: [getItemsService]
 })

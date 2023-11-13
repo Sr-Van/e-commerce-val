@@ -6,6 +6,7 @@ import { SearchComponent } from './components/search/search.component';
 import { NotFoundComponent } from './components/search/not-found/not-found.component';
 import { DetailsComponent } from './components/products/details/details.component';
 import { CategoriesComponent } from './components/products/categories/categories.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   {path: 'products/categoria/:cat', component: CategoriesComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent},
   {path: 'search', component: SearchComponent},
   {path: 'not-found', component: NotFoundComponent},
+  {path: 'cart', component: CartComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: '**', redirectTo: '/products', pathMatch: 'full'}
 ];

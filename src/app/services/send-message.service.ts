@@ -23,22 +23,24 @@ export class SendMessageService {
   constructor(private cookies: CookieService,
               private http: HttpClient) { }
 
-  filterArrayProducts (arr: Products[]) {
+  filterArrayProducts (arr: Products[], addres: any) {
+
     let str = ''
     let productsToCookies = ''
 
     arr.forEach(({ product, price }) => {
       productsToCookies += ' ' + product
-      str += ` *${this.formatProduct(product)}* no valor de *R$${price},00* ,`
+      str += `${this.formatString(product)}: *R$${price},00* %0A`
     })
 
     const totalPrice  = arr
       .reduce((accumulator, {price}) => accumulator + parseFloat(price), 0)
 
-    this.text = `Olá, fiz um pedido no seu site com os produtos: ${str} o valor total do pedido foi *R$${totalPrice},00* gostaria de saber quais estão disponiveis para fazer a compra!`
-
-    console.log(productsToCookies);
-
+    this.text = `Olá, fiz um pedido no seu site com os produtos:
+    %0A %0A${str}Valor total: *R$${totalPrice},00*
+    %0A %0AEndereço:
+    %0A %0ARua ${this.formatString(addres.rua)}, ${this.formatString(addres.numero)}, ${this.formatString(addres.bairro)}, ${this.formatString(addres.comp)}
+    %0A %0AGostaria de saber quais estão disponiveis para fazer a compra!`
 
     this.sendMethods(productsToCookies)
 
@@ -98,8 +100,8 @@ export class SendMessageService {
     window.open(url, '_blank')
   }
 
-  formatProduct (value: any) {
-    let palavras = value.split(' ')
+  formatString (value: any) {
+    let palavras = value.split('')
 
     let result = ''
 
@@ -112,6 +114,6 @@ export class SendMessageService {
       })
     })
 
-    return result;
+    return result[0].toUpperCase() + result.substr(1).toLowerCase();;
   }
 }

@@ -12,15 +12,26 @@
     </ul>
   </div>
   <ul class="cart-footer d-flex flex-column align-items-center h-25 list-unstyled gap-1 mb-1 p-3">
-      <li class="d-flex justify-content-between w-100 px-3 pt-3">
-        <span>Endereço completo:</span>
-        <input type="text" name="addres" class="form-control">
-      </li>
+      <div class="row">
+        <span>Seu Endereço:</span>
+        <div class="d-flex justify-content-between px-3 pt-3 col-12">
+          <input type="text" name="rua" class="form-control" [(ngModel)]="addres.rua"  placeholder="Rua/Avenida">
+        </div>
+        <div class="d-flex justify-content-between px-3 pt-3 col-4">
+          <input type="text" name="numero" class="form-control" [(ngModel)]="addres.numero"  placeholder="N°">
+        </div>
+        <div class="d-flex justify-content-between px-3 pt-3 col-8">
+          <input type="text" name="bairro" class="form-control" [(ngModel)]="addres.bairro"  placeholder="Bairro">
+        </div>
+        <div class="d-flex justify-content-between px-3 pt-3 col-12">
+          <input type="text" name="complemento" class="form-control" [(ngModel)]="addres.comp"  placeholder="Complemento">
+        </div>
+      </div>
       <li class="d-flex justify-content-between w-100 px-3 pt-3">
         <p class="m-0">Total:</p> <b class="total-value">{{ totalPrice | currency: 'BRL' }}</b>
       </li>
       <li class="d-flex justify-content-between w-100 px-3">
-        <p>entrega:</p> <b class="text-success">gratuita para recanto verde</b>
+        <p>entrega:</p> <b class="text-success text-end">gratuita para recanto verde</b>
       </li>
       <li class="d-flex justify-content-center w-100 px-3">
         <button class="btn color-bg-terciary w-75" (click)="sendRequest()">Continuar a compra</button>

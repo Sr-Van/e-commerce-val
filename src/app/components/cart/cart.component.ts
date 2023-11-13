@@ -15,6 +15,12 @@ export class CartComponent {
   totalPrice: number
   subs: Subscription
 
+  addres: any = {}
+
+  rua: string
+  numero: number
+  bairro: string
+
   constructor(private message: SendMessageService,
               private getItem: getItemsService){}
 
@@ -25,8 +31,6 @@ export class CartComponent {
 
     this.cartList = this.getItem.cart
     this.totalPrice = this.getItem.getCartPrice(this.cartList)
-
-    console.log(this.cartList);
 
 
     this.subs = this.getItem.sendEvent.subscribe(() => {
@@ -39,6 +43,7 @@ export class CartComponent {
 
 
   sendRequest() {
-    this.message.filterArrayProducts(this.cartList)
+    this.message.filterArrayProducts(this.cartList, this.addres)
   }
+
 }
